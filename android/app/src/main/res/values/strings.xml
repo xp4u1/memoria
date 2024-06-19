@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">memoria</string>
+    <string name="title_activity_main">memoria</string>
+    <string name="package_name">de.xp4u1.discite</string>
+    <string name="custom_url_scheme">de.xp4u1.discite</string>
+</resources>
