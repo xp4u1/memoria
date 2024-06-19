@@ -1,6 +1,8 @@
 import { Redirect, Route } from "react-router-dom";
 import { IonApp, IonRouterOutlet, setupIonicReact } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
+import { StatusBar, Style } from "@capacitor/status-bar";
+
 import Home from "./pages/Home";
 import Writer from "./pages/Writer";
 import Database from "./pages/Database";
@@ -42,6 +44,9 @@ import "@fontsource/inter/800.css"; // Extra Bold
 import "./theme/variables.css";
 
 setupIonicReact({ mode: "ios" });
+
+StatusBar.setStyle({ style: Style.Light });
+StatusBar.setBackgroundColor({ color: "#f1f3f4" });
 
 const App: React.FC = () => (
   <IonApp>
