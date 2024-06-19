@@ -32,7 +32,10 @@ const WeekView: React.FC = () => {
   return (
     <div id="weekView">
       {getCurrentWeek().map((entry) => (
-        <div className={`dayCard ${entry.active ? " active" : ""}`}>
+        <div
+          key={entry.day + entry.date}
+          className={`dayCard ${entry.active ? " active" : ""}`}
+        >
           <p>{entry.day}</p>
           <p className="date">{entry.date}</p>
         </div>
