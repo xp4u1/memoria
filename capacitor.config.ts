@@ -1,7 +1,7 @@
 import type { CapacitorConfig } from "@capacitor/cli";
 
 const config: CapacitorConfig = {
-  appId: "io.ionic.starter",
+  appId: "de.xp4u1.discite",
   appName: "memoria",
   webDir: "dist",
 };
