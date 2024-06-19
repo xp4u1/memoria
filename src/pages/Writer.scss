@@ -1,0 +1,22 @@
+#writerPage .container {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  padding: 2rem 1rem;
+
+  ion-textarea {
+    --highlight-height: unset;
+
+    textarea {
+      padding: 0;
+    }
+  }
+
+  .title {
+    textarea {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+  }
+}
