@@ -1,2 +1,11 @@
 /* For information on how to create your own theme, please see:
 http://ionicframework.com/docs/theming/ */
+
+:root {
+  --ion-background-color: #f1f3f4;
+  --ion-default-font: "Inter", "Roboto", "Helvetica Neue", sans-serif !important;
+  --ion-text-color: #464646;
+
+  --gray: #dfdfdf;
+  --text-light: #c0c0c0;
+}

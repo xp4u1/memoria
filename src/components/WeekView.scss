@@ -1,0 +1,42 @@
+#weekView {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+
+  margin-top: 2rem;
+
+  padding-bottom: 1rem;
+  border-bottom: 2px solid var(--gray);
+
+  .dayCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 2.5rem;
+    padding: .4rem;
+
+    border: 2px solid transparent;
+    border-radius: .5rem;  
+
+    p {
+      margin: .1rem 0;
+      font-size: .7rem;
+      color: var(--text-light);
+
+      &.date {
+        font-weight: bold;
+        font-size: .9rem;
+        margin-top: .2rem;
+      }
+    }
+
+    &.active {
+      border-color: var(--gray);
+
+      p {
+        color: inherit;
+      }
+    }
+  }
+}

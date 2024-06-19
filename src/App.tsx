@@ -28,7 +28,7 @@ import "@ionic/react/css/display.css";
 
 /* import '@ionic/react/css/palettes/dark.always.css'; */
 /* import '@ionic/react/css/palettes/dark.class.css'; */
-import "@ionic/react/css/palettes/dark.system.css";
+// import "@ionic/react/css/palettes/dark.system.css"; TODO: add dark mode
 
 /* Font */
 import "@fontsource/inter/400.css"; // Regular
