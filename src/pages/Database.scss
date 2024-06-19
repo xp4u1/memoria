@@ -1,0 +1,12 @@
+#databasePage .container {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  padding: 0 1rem;
+  width: 100%;
+
+  ion-searchbar {
+    --background: white;
+    padding: 0;
+  }
+}

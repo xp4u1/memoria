@@ -59,4 +59,10 @@
       color: var(--text-light);
     }
   }
+
+  a#databaseLink {
+    margin-top: 40px;
+    color: var(--text-light);
+    text-decoration: unset;
+  }
 }

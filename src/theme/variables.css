@@ -3,6 +3,7 @@ http://ionicframework.com/docs/theming/ */
 
 :root {
   --ion-background-color: #f1f3f4;
+  --ion-toolbar-background: #f1f3f4;
   --ion-default-font: "Inter", "Roboto", "Helvetica Neue", sans-serif !important;
   --ion-text-color: #464646;
 

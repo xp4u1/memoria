@@ -1,0 +1,20 @@
+ion-card {
+  --background: white;
+  box-shadow: unset;
+  width: 100%;
+  margin-bottom: 0;
+
+  ion-card-title {
+    font-weight: 800;
+    font-size: 1.3rem;
+  }
+
+  ion-grid {
+    --ion-grid-column-padding: 0;
+    padding: 10px 0 0;
+
+    .actionButtons {
+      text-align: right;
+    }
+  }
+}

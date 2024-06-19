@@ -27,6 +27,10 @@ const Home: React.FC = () => {
             <h1>Erinnerungen</h1>
             <p>Gedanken und Gefühle festhalten</p>
           </section>
+
+          <a id="databaseLink" href="/database">
+            Datenbank öffnen
+          </a>
         </div>
       </IonContent>
     </IonPage>

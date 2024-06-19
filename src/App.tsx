@@ -3,6 +3,7 @@ import { IonApp, IonRouterOutlet, setupIonicReact } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
 import Home from "./pages/Home";
 import Writer from "./pages/Writer";
+import Database from "./pages/Database";
 
 /* Core CSS required for Ionic components to work properly */
 import "@ionic/react/css/core.css";
@@ -40,7 +41,7 @@ import "@fontsource/inter/800.css"; // Extra Bold
 /* Theme variables */
 import "./theme/variables.css";
 
-setupIonicReact();
+setupIonicReact({ mode: "ios" });
 
 const App: React.FC = () => (
   <IonApp>
@@ -51,6 +52,9 @@ const App: React.FC = () => (
         </Route>
         <Route exact path="/writer">
           <Writer />
+        </Route>
+        <Route exact path="/database">
+          <Database />
         </Route>
         <Route exact path="/">
           <Redirect to="/home" />
