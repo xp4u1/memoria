@@ -14,20 +14,20 @@
     align-items: center;
 
     width: 2.5rem;
-    padding: .4rem;
+    padding: 0.4rem;
 
     border: 2px solid transparent;
-    border-radius: .5rem;  
+    border-radius: 0.5rem;
 
     p {
-      margin: .1rem 0;
-      font-size: .7rem;
+      margin: 0.1rem 0;
+      font-size: 0.7rem;
       color: var(--text-light);
 
       &.date {
         font-weight: bold;
-        font-size: .9rem;
-        margin-top: .2rem;
+        font-size: 0.9rem;
+        margin-top: 0.2rem;
       }
     }
 
