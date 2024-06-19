@@ -4,6 +4,11 @@ const config: CapacitorConfig = {
   appId: "de.xp4u1.discite",
   appName: "memoria",
   webDir: "dist",
+  plugins: {
+    SplashScreen: {
+      launchShowDuration: 0,
+    },
+  },
 };
 
 export default config;
