@@ -1,47 +1,37 @@
 import "./WeekView.scss";
 
-const data = [
-  {
-    day: "Mo",
-    date: "27",
-    active: false,
-  },
-  {
-    day: "Di",
-    date: "28",
-    active: false,
-  },
-  {
-    day: "Mi",
-    date: "29",
-    active: false,
-  },
-  {
-    day: "Do",
-    date: "30",
-    active: false,
-  },
-  {
-    day: "Fr",
-    date: "31",
-    active: false,
-  },
-  {
-    day: "Sa",
-    date: "01",
-    active: false,
-  },
-  {
-    day: "So",
-    date: "02",
-    active: true,
-  },
-];
+const getCurrentWeek = () => {
+  const days = ["Mo", "Di", "Mi", "Do", "Fr", "Sa", "So"];
+  const today = new Date();
+  const currentDayIndex = (today.getDay() + 6) % 7; // Monday should be the first day.
+  const startOfWeek = new Date(today);
+
+  // Adjust the start date to the most recent Monday.
+  startOfWeek.setDate(today.getDate() - currentDayIndex);
+
+  const weekData = [];
+
+  for (let i = 0; i < 7; i++) {
+    const currentDate = new Date(startOfWeek);
+    currentDate.setDate(startOfWeek.getDate() + i);
+    const day = days[i];
+    const date = String(currentDate.getDate()).padStart(2, "0");
+    const active = i === currentDayIndex;
+
+    weekData.push({
+      day,
+      date,
+      active,
+    });
+  }
+
+  return weekData;
+};
 
 const WeekView: React.FC = () => {
   return (
     <div id="weekView">
-      {data.map((entry) => (
+      {getCurrentWeek().map((entry) => (
         <div className={`dayCard ${entry.active ? " active" : ""}`}>
           <p>{entry.day}</p>
           <p className="date">{entry.date}</p>
