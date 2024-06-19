@@ -30,6 +30,12 @@ import "@ionic/react/css/display.css";
 /* import '@ionic/react/css/palettes/dark.class.css'; */
 import "@ionic/react/css/palettes/dark.system.css";
 
+/* Font */
+import "@fontsource/inter/400.css"; // Regular
+import "@fontsource/inter/500.css"; // Medium
+import "@fontsource/inter/700.css"; // Bold
+import "@fontsource/inter/800.css"; // Extra Bold
+
 /* Theme variables */
 import "./theme/variables.css";
 
