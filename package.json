@@ -32,7 +32,8 @@
     "react-dom": "^18.2.0",
     "react-router": "^5.3.4",
     "react-router-dom": "^5.3.4",
-    "use-pouchdb": "^2.0.2"
+    "use-pouchdb": "^2.0.2",
+    "uuid": "^10.0.0"
   },
   "devDependencies": {
     "@capacitor/cli": "6.0.0",
@@ -43,6 +44,7 @@
     "@types/pouchdb": "^6.4.2",
     "@types/react": "^18.0.27",
     "@types/react-dom": "^18.0.10",
+    "@types/uuid": "^10.0.0",
     "@vitejs/plugin-legacy": "^5.0.0",
     "@vitejs/plugin-react": "^4.0.1",
     "cypress": "^13.5.0",

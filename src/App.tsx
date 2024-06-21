@@ -61,7 +61,7 @@ const App: React.FC = () => (
           <Route exact path="/home">
             <Home />
           </Route>
-          <Route exact path="/writer">
+          <Route exact path="/writer/:id">
             <Writer />
           </Route>
           <Route exact path="/database">
