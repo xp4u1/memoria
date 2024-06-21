@@ -6,6 +6,7 @@ import { StatusBar, Style } from "@capacitor/status-bar";
 import Home from "./pages/Home";
 import Writer from "./pages/Writer";
 import Database from "./pages/Database";
+import Auth from "./pages/Auth";
 
 /* Core CSS required for Ionic components to work properly */
 import "@ionic/react/css/core.css";
@@ -62,7 +63,8 @@ const App: React.FC = () => (
           <Database />
         </Route>
         <Route exact path="/">
-          <Redirect to="/home" />
+          {/* <Redirect to="/home" /> */}
+          <Auth />
         </Route>
       </IonRouterOutlet>
     </IonReactRouter>

@@ -15,6 +15,16 @@
     "@jridgewell/gen-mapping" "^0.3.5"
     "@jridgewell/trace-mapping" "^0.3.24"
 
+"@aparajita/capacitor-biometric-auth@^8.0.0":
+  version "8.0.0"
+  resolved "https://registry.yarnpkg.com/@aparajita/capacitor-biometric-auth/-/capacitor-biometric-auth-8.0.0.tgz#265a20acdb396dbb65921b1b295ae1a389785d93"
+  integrity sha512-ILRZMvPkx6BvDozJP39Xg6YWQq4rEXCq7itQIAQpi2/+HBi7UM/3a7Ws9fpQBrPTjrenle/h4T2M1MMHyc8dvw==
+  dependencies:
+    "@capacitor/android" "^6.0.0"
+    "@capacitor/app" "^6.0.0"
+    "@capacitor/core" "^6.0.0"
+    "@capacitor/ios" "^6.0.0"
+
 "@babel/code-frame@^7.10.4", "@babel/code-frame@^7.12.13", "@babel/code-frame@^7.24.6":
   version "7.24.6"
   resolved "https://registry.yarnpkg.com/@babel/code-frame/-/code-frame-7.24.6.tgz#ab88da19344445c3d8889af2216606d3329f3ef2"
@@ -974,7 +984,12 @@
   resolved "https://registry.yarnpkg.com/@capacitor/android/-/android-6.0.0.tgz#eb24c64a5c6821fbbb8db48eedf50eca18876318"
   integrity sha512-NwL87VO9F1WY/EgvJZN9pIhjejq688k2fRW6XWNLVe3cgGE6nUb9J34KI68fhx3139cf2LVGPUYs+mwZC8esiQ==
 
-"@capacitor/app@6.0.0":
+"@capacitor/android@^6.0.0":
+  version "6.1.0"
+  resolved "https://registry.yarnpkg.com/@capacitor/android/-/android-6.1.0.tgz#68a64de088f2a42dafa3bcbcdeba860ca33e2fc4"
+  integrity sha512-S4PW4N5xtKHTrICjG7bkBhI70jdXbb+8nbm1pJpuXChCD0gkCcofJhPaw4bCoO0egcugBN1U7DkegNw5jWpHcw==
+
+"@capacitor/app@6.0.0", "@capacitor/app@^6.0.0":
   version "6.0.0"
   resolved "https://registry.yarnpkg.com/@capacitor/app/-/app-6.0.0.tgz#b383c97543e2fb9462e8bd69c0f512c33bba0089"
   integrity sha512-X5UGd90Jh5p9rmoPyMqFyFWqOypdJgVJhYcM5X1YyDVJJGzmJ5MuYv1+ajj5DW9Qyh+5a3th9WYptdGby8jidA==
@@ -1010,10 +1025,22 @@
   dependencies:
     tslib "^2.1.0"
 
+"@capacitor/core@^6.0.0":
+  version "6.1.0"
+  resolved "https://registry.yarnpkg.com/@capacitor/core/-/core-6.1.0.tgz#1b4a93f3d5976ce3fd4a7f1b797c48c1243ec934"
+  integrity sha512-Kt4ONm0X9xxJXn9Q73oBaKdzep5B/VJw3VjXa2eGul4cD2k37mJwgjpXSMRnLH0Aju5bCiRL8J/hMAfTlokO6A==
+  dependencies:
+    tslib "^2.1.0"
+
 "@capacitor/haptics@6.0.0":
   version "6.0.0"
   resolved "https://registry.yarnpkg.com/@capacitor/haptics/-/haptics-6.0.0.tgz#4ff29ca16173c28d50ab6a227bc4cb8091df6e1d"
   integrity sha512-z2TmB+pTbd98Il2I1xpZGClCFwORxxP2m9f1a0rh70c2ubj2atVyZctgxrx1fuoExZTNGSxHaylWfrmjmtelVg==
+
+"@capacitor/ios@^6.0.0":
+  version "6.1.0"
+  resolved "https://registry.yarnpkg.com/@capacitor/ios/-/ios-6.1.0.tgz#0f6b9818032f4e187bbdd63015c8c040fcde85a7"
+  integrity sha512-ex2q0LAyDDgfJj4fKDQuSNUYSpic3939/8A/sIIIxslwuRBF5i5fuhAngu6BhCt/pQSfEETcHtg2j2vD+YEZ2w==
 
 "@capacitor/keyboard@6.0.0":
   version "6.0.0"

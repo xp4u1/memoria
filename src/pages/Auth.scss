@@ -1,0 +1,21 @@
+#authPage #container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  padding-top: 30%;
+
+  h1 {
+    font-weight: 800;
+    font-size: 1.5rem;
+    letter-spacing: 0.04rem;
+    margin: 0;
+  }
+
+  p {
+    font-weight: 500;
+    font-size: 1rem;
+    margin-top: 0.8rem;
+    color: var(--text-light);
+  }
+}
