@@ -2,6 +2,8 @@ import { Redirect, Route } from "react-router-dom";
 import { IonApp, IonRouterOutlet, setupIonicReact } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
 import { StatusBar, Style } from "@capacitor/status-bar";
+import PouchDB from "pouchdb-browser";
+import { Provider } from "use-pouchdb";
 
 import Home from "./pages/Home";
 import Writer from "./pages/Writer";
@@ -49,26 +51,30 @@ setupIonicReact({ mode: "ios" });
 StatusBar.setStyle({ style: Style.Light });
 StatusBar.setBackgroundColor({ color: "#f1f3f4" });
 
+const database = new PouchDB("memoria");
+
 const App: React.FC = () => (
-  <IonApp>
-    <IonReactRouter>
-      <IonRouterOutlet>
-        <Route exact path="/home">
-          <Home />
-        </Route>
-        <Route exact path="/writer">
-          <Writer />
-        </Route>
-        <Route exact path="/database">
-          <Database />
-        </Route>
-        <Route exact path="/">
-          {/* <Redirect to="/home" /> */}
-          <Auth />
-        </Route>
-      </IonRouterOutlet>
-    </IonReactRouter>
-  </IonApp>
+  <Provider pouchdb={database}>
+    <IonApp>
+      <IonReactRouter>
+        <IonRouterOutlet>
+          <Route exact path="/home">
+            <Home />
+          </Route>
+          <Route exact path="/writer">
+            <Writer />
+          </Route>
+          <Route exact path="/database">
+            <Database />
+          </Route>
+          <Route exact path="/">
+            {/* <Redirect to="/home" /> */}
+            <Auth />
+          </Route>
+        </IonRouterOutlet>
+      </IonReactRouter>
+    </IonApp>
+  </Provider>
 );
 
 export default App;
