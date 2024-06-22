@@ -1,19 +1,9 @@
 import {
   IonBackButton,
-  IonButton,
   IonButtons,
-  IonCard,
-  IonCardContent,
-  IonCardHeader,
-  IonCardSubtitle,
-  IonCardTitle,
-  IonCol,
   IonContent,
-  IonGrid,
   IonHeader,
-  IonIcon,
   IonPage,
-  IonRow,
   IonSearchbar,
   IonTitle,
   IonToolbar,
@@ -21,8 +11,11 @@ import {
 
 import "./Database.scss";
 import DatabaseEntryCard from "../components/DatabaseEntryCard";
+import { useAllDocs } from "use-pouchdb";
 
 const Database: React.FC = () => {
+  const documents = useAllDocs();
+
   return (
     <IonPage id="databasePage">
       <IonHeader className="ion-no-border">
@@ -42,9 +35,9 @@ const Database: React.FC = () => {
             placeholder="Einträge suchen"
           />
 
-          <DatabaseEntryCard />
-          <DatabaseEntryCard />
-          <DatabaseEntryCard />
+          {documents.rows.map((row) => (
+            <DatabaseEntryCard key={row.id} id={row.id} />
+          ))}
         </div>
       </IonContent>
     </IonPage>
