@@ -1,7 +1,10 @@
-import { IonContent, IonPage } from "@ionic/react";
+import { IonContent, IonPage, useIonRouter } from "@ionic/react";
+import { usePouch } from "use-pouchdb";
 
 import "./Home.scss";
 import WeekView from "../components/WeekView";
+import { generateMemoryID, generateReflectionID } from "../data/entry";
+import { Link } from "react-router-dom";
 
 const getGreeting = () => {
   const hours = new Date().getHours();
@@ -45,6 +48,37 @@ const getDate = () => {
 };
 
 const Home: React.FC = () => {
+  const router = useIonRouter();
+  const pouch = usePouch();
+
+  const createAndNavigate = (id: string, title: string) => {
+    const now = new Date();
+
+    // Fails (without error) if the document already exists.
+    pouch.put({
+      _id: id,
+      title: "",
+      body: "",
+      createdAt: now.toISOString(),
+      updatedAt: now.toISOString(),
+    });
+
+    router.push("/writer/" + id);
+  };
+
+  const openReflection = () => {
+    const today = new Date();
+
+    createAndNavigate(
+      generateReflectionID(today),
+      today.toLocaleDateString("de-DE")
+    );
+  };
+
+  const openNewMemory = () => {
+    createAndNavigate(generateMemoryID(), "");
+  };
+
   return (
     <IonPage id="homePage">
       <IonContent fullscreen>
@@ -60,18 +94,18 @@ const Home: React.FC = () => {
 
           <h1 className="sectionHeader">Tagebuch</h1>
 
-          <section className="card">
+          <section className="card" onClick={openReflection}>
             <h1>Reflektion</h1>
             <p>Was ist heute passiert?</p>
           </section>
-          <section className="card">
+          <section className="card" onClick={openNewMemory}>
             <h1>Erinnerungen</h1>
             <p>Gedanken und Gefühle festhalten</p>
           </section>
 
-          <a id="databaseLink" href="/database">
+          <Link id="databaseLink" to="/database">
             Datenbank öffnen
-          </a>
+          </Link>
         </div>
       </IonContent>
     </IonPage>
