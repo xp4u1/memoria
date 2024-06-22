@@ -15,6 +15,7 @@ import { useEffect, useState } from "react";
 
 import "./Database.scss";
 import DatabaseEntryCard from "../components/DatabaseEntryCard";
+import { Entry } from "../data/entry";
 
 const Database: React.FC = () => {
   const allDocsResult = useAllDocs({
@@ -22,6 +23,7 @@ const Database: React.FC = () => {
     descending: true,
   });
 
+  const [query, setQuery] = useState("");
   const [rows, setRows] = useState<any[]>([]);
   const [visibleRows, setVisibleRows] = useState<any[]>([]);
 
@@ -34,9 +36,25 @@ const Database: React.FC = () => {
     setVisibleRows(rows.slice(0, 20));
   }, [rows]);
 
+  useEffect(() => filterRows(), [query]);
+
   const addRows = () => {
     const count = visibleRows.length;
     setVisibleRows([...visibleRows, ...rows.slice(count, count + 10)]);
+  };
+
+  const filterRows = () => {
+    if (query === "") setRows(allDocsResult.rows);
+    else
+      setRows(
+        allDocsResult.rows.filter((row) =>
+          (row.doc as unknown as Entry).title
+            .toLowerCase()
+            .includes(query.toLowerCase())
+        )
+      );
+
+    setVisibleRows(rows.slice(0, 20));
   };
 
   return (
@@ -54,7 +72,7 @@ const Database: React.FC = () => {
       <IonContent fullscreen>
         <div className="container">
           <IonSearchbar
-            onIonChange={(event) => console.debug(event)}
+            onIonInput={(event) => setQuery(event.detail.value || "")}
             placeholder="Einträge suchen"
           />
 
