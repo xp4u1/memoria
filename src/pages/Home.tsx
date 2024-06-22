@@ -57,7 +57,7 @@ const Home: React.FC = () => {
     // Fails (without error) if the document already exists.
     pouch.put({
       _id: id,
-      title: "",
+      title: title,
       body: "",
       createdAt: now.toISOString(),
       updatedAt: now.toISOString(),
