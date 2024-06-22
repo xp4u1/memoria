@@ -8,18 +8,22 @@ export interface Entry {
   updatedAt: string;
 }
 
-// reflection-YYYY-MM-DD
-export const generateReflectionID = (date: Date) => {
+const localISODate = (date: Date) => {
   const pad = (number: number) => String(number).padStart(2, "0");
 
   const year = date.getFullYear();
   const month = pad(date.getMonth() + 1);
   const day = pad(date.getDate());
 
-  return `reflection-${year}-${month}-${day}`;
+  return `${year}-${month}-${day}`;
 };
 
-// memory-UUID
-export const generateMemoryID = () => {
-  return "memory-" + uuidv4();
+// YYYY-MM-DD-reflection
+export const generateReflectionID = (date: Date) => {
+  return localISODate(date) + "-reflection";
+};
+
+// YYYY-MM-DD-memory-UUID
+export const generateMemoryID = (date: Date) => {
+  return `${localISODate(date)}-memory-${uuidv4()}`;
 };

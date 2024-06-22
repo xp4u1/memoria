@@ -89,7 +89,7 @@ const Home: React.FC = () => {
   };
 
   const openNewMemory = () => {
-    createAndNavigate(generateMemoryID(), "");
+    createAndNavigate(generateMemoryID(today()), "");
   };
 
   /**
