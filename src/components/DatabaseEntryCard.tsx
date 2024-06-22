@@ -12,33 +12,28 @@ import {
   useIonRouter,
 } from "@ionic/react";
 import { pencil, trash } from "ionicons/icons";
-import { useDoc, usePouch } from "use-pouchdb";
+import { usePouch } from "use-pouchdb";
 
 import "./DatabaseEntryCard.scss";
-import { Entry } from "../data/entry";
 
-const DatabaseEntryCard: React.FC<{ id: string }> = ({ id }) => {
-  const result = useDoc<Entry>(id);
+const DatabaseEntryCard: React.FC<{ document: any }> = ({ document }) => {
   const router = useIonRouter();
   const pouch = usePouch();
 
-  if (result.state === "error")
-    return <p>Eintrag konnte nicht geladen werden.</p>;
-
   const removeDocument = () => {
-    pouch.remove(result.doc!);
+    pouch.remove(document);
   };
 
   const editDocument = () => {
-    router.push("/writer/" + result.doc?._id);
+    router.push("/writer/" + document._id);
   };
 
   return (
     <IonCard>
       <IonCardHeader>
-        <IonCardTitle>{result.doc?.title}</IonCardTitle>
+        <IonCardTitle>{document.title}</IonCardTitle>
         <IonCardSubtitle>
-          {new Date(result.doc?.createdAt!).toLocaleDateString("de-DE")}
+          {new Date(document.createdAt).toLocaleDateString("de-DE")}
         </IonCardSubtitle>
       </IonCardHeader>
       <IonCardContent>

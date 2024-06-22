@@ -3,18 +3,41 @@ import {
   IonButtons,
   IonContent,
   IonHeader,
+  IonInfiniteScroll,
+  IonInfiniteScrollContent,
   IonPage,
   IonSearchbar,
   IonTitle,
   IonToolbar,
 } from "@ionic/react";
+import { useAllDocs } from "use-pouchdb";
+import { useEffect, useState } from "react";
 
 import "./Database.scss";
 import DatabaseEntryCard from "../components/DatabaseEntryCard";
-import { useAllDocs } from "use-pouchdb";
 
 const Database: React.FC = () => {
-  const documents = useAllDocs();
+  const allDocsResult = useAllDocs({
+    include_docs: true,
+    descending: true,
+  });
+
+  const [rows, setRows] = useState<any[]>([]);
+  const [visibleRows, setVisibleRows] = useState<any[]>([]);
+
+  useEffect(() => {
+    if (allDocsResult.state !== "done") return;
+    setRows(allDocsResult.rows);
+  }, [allDocsResult]);
+
+  useEffect(() => {
+    setVisibleRows(rows.slice(0, 20));
+  }, [rows]);
+
+  const addRows = () => {
+    const count = visibleRows.length;
+    setVisibleRows([...visibleRows, ...rows.slice(count, count + 10)]);
+  };
 
   return (
     <IonPage id="databasePage">
@@ -35,9 +58,18 @@ const Database: React.FC = () => {
             placeholder="Einträge suchen"
           />
 
-          {documents.rows.map((row) => (
-            <DatabaseEntryCard key={row.id} id={row.id} />
+          {visibleRows.map((row) => (
+            <DatabaseEntryCard key={row.id} document={row.doc} />
           ))}
+
+          <IonInfiniteScroll
+            onIonInfinite={(event) => {
+              addRows();
+              setTimeout(() => event.target.complete(), 500);
+            }}
+          >
+            <IonInfiniteScrollContent />
+          </IonInfiniteScroll>
         </div>
       </IonContent>
     </IonPage>
