@@ -66,3 +66,12 @@
     text-decoration: unset;
   }
 }
+
+@import "../styles/alert";
+
+ion-alert.dayPrompt {
+  button.alert-button:last-child {
+    // Override Ionic's "bold"
+    font-weight: 400;
+  }
+}
