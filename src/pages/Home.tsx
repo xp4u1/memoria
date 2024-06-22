@@ -1,4 +1,4 @@
-import { IonContent, IonPage, useIonRouter } from "@ionic/react";
+import { IonAlert, IonContent, IonPage, useIonRouter } from "@ionic/react";
 import { usePouch } from "use-pouchdb";
 
 import "./Home.scss";
@@ -82,6 +82,17 @@ const Home: React.FC = () => {
   return (
     <IonPage id="homePage">
       <IonContent fullscreen>
+        <IonAlert
+          trigger="addMemoryTrigger"
+          header="Eintrag erstellen"
+          message="Willst du eine neue Erinnerung hinzufügen?"
+          buttons={[
+            { text: "Abbrechen", role: "cancel" },
+            { text: "Erstellen", handler: openNewMemory },
+          ]}
+          mode="md"
+        />
+
         <div id="container">
           <header>
             <h1>{getGreeting()}</h1>
@@ -98,7 +109,7 @@ const Home: React.FC = () => {
             <h1>Reflektion</h1>
             <p>Was ist heute passiert?</p>
           </section>
-          <section className="card" onClick={openNewMemory}>
+          <section className="card" id="addMemoryTrigger">
             <h1>Erinnerungen</h1>
             <p>Gedanken und Gefühle festhalten</p>
           </section>
