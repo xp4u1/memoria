@@ -6,7 +6,7 @@ import {
   IonPage,
   IonTextarea,
   useIonRouter,
-  useIonViewDidEnter,
+  useIonViewWillEnter,
 } from "@ionic/react";
 import { checkmark } from "ionicons/icons";
 import { useParams } from "react-router";
@@ -26,7 +26,7 @@ const Writer: React.FC = () => {
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
 
-  useIonViewDidEnter(() => {
+  useIonViewWillEnter(() => {
     pouch
       .get(id)
       .then((document) => {
