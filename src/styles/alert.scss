@@ -1,0 +1,15 @@
+ion-alert {
+  h2.alert-title {
+    font-weight: 800 !important;
+    font-size: 1.3rem !important;
+  }
+
+  .alert-message {
+    font-weight: 500 !important;
+  }
+
+  button.alert-button {
+    color: var(--ion-text-color) !important;
+    border-color: var(--gray) !important;
+  }
+}

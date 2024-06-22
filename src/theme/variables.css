@@ -6,6 +6,7 @@ http://ionicframework.com/docs/theming/ */
   --ion-toolbar-background: #f1f3f4;
   --ion-default-font: "Inter", "Roboto", "Helvetica Neue", sans-serif !important;
   --ion-text-color: #464646;
+  --ion-backdrop-opacity: 0.15;
 
   --gray: #dfdfdf;
   --text-light: #c0c0c0;
