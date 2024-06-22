@@ -1,4 +1,5 @@
 import {
+  IonAlert,
   IonButton,
   IonCard,
   IonCardContent,
@@ -30,6 +31,16 @@ const DatabaseEntryCard: React.FC<{ document: any }> = ({ document }) => {
 
   return (
     <IonCard>
+      <IonAlert
+        trigger={"removeDocumentTrigger-" + document._id}
+        header="Eintrag löschen"
+        message="Diese Aktion kann nicht rückgängig gemacht werden."
+        buttons={[
+          { text: "Abbrechen", role: "cancel" },
+          { text: "Löschen", handler: removeDocument },
+        ]}
+      />
+
       <IonCardHeader>
         <IonCardTitle>{document.title}</IonCardTitle>
         <IonCardSubtitle>
@@ -54,7 +65,7 @@ const DatabaseEntryCard: React.FC<{ document: any }> = ({ document }) => {
                 <IonIcon icon={pencil} slot="icon-only" size="small" />
               </IonButton>
               <IonButton
-                onClick={removeDocument}
+                id={"removeDocumentTrigger-" + document._id}
                 color="dark"
                 size="small"
                 fill="clear"
