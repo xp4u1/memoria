@@ -15,9 +15,7 @@ const getGreeting = () => {
   return "guten abend.";
 };
 
-const getDate = () => {
-  const today = new Date();
-
+const getDate = (date: Date) => {
   const days = [
     "Sonntag",
     "Montag",
@@ -42,8 +40,8 @@ const getDate = () => {
     "Dezember",
   ];
 
-  return `${days[today.getDay()]}, ${today.getDate()}. ${
-    months[today.getMonth()]
+  return `${days[date.getDay()]}, ${date.getDate()}. ${
+    months[date.getMonth()]
   }`;
 };
 
@@ -71,7 +69,7 @@ const Home: React.FC = () => {
 
     createAndNavigate(
       generateReflectionID(today),
-      today.toLocaleDateString("de-DE")
+      `${getDate(today)} ${today.getFullYear()}`
     );
   };
 
@@ -96,7 +94,7 @@ const Home: React.FC = () => {
         <div id="container">
           <header>
             <h1>{getGreeting()}</h1>
-            <h2>{getDate()}</h2>
+            <h2>{getDate(new Date())}</h2>
           </header>
 
           <WeekView />
