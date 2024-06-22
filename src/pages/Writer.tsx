@@ -22,6 +22,7 @@ const Writer: React.FC = () => {
   const pouch = usePouch();
 
   const [rev, setRev] = useState("");
+  const [createdAt, setCreatedAt] = useState("");
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
 
@@ -32,6 +33,7 @@ const Writer: React.FC = () => {
         const entry = document as unknown as Entry;
 
         setRev(document._rev);
+        setCreatedAt(entry.createdAt);
         setTitle(entry.title);
         setBody(entry.body);
       })
@@ -48,6 +50,8 @@ const Writer: React.FC = () => {
         _rev: rev,
         title: title,
         body: body,
+        createdAt: createdAt,
+        updatedAt: new Date().toISOString(),
       })
       .then(() => {
         router.goBack();
