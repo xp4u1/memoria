@@ -1,0 +1,6 @@
+ion-toast {
+  &::part(message) {
+    color: var(--ion-text-color);
+    font-weight: 500;
+  }
+}

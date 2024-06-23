@@ -8,6 +8,10 @@ http://ionicframework.com/docs/theming/ */
   --ion-text-color: #464646;
   --ion-backdrop-opacity: 0.15;
 
+  --ion-color-success: #aadac9;
+  --ion-color-danger: #daaabb;
+  --ion-color-light: white;
+
   --gray: #dfdfdf;
   --text-light: #c0c0c0;
 }
