@@ -51,8 +51,8 @@ const DatabaseEntryCard: React.FC<{ document: any }> = ({ document }) => {
         <IonGrid>
           <IonRow>
             <IonCol>
-              <IonButton color="dark" size="small">
-                Lesen
+              <IonButton onClick={editDocument} color="dark" size="small">
+                Öffnen
               </IonButton>
             </IonCol>
             <IonCol className="actionButtons">
