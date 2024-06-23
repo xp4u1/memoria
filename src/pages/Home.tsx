@@ -161,6 +161,12 @@ const Home: React.FC = () => {
           <Link id="databaseLink" to="/database">
             Datenbank öffnen
           </Link>
+
+          {/* ------- */}
+
+          <Link id="settingsLink" to="/settings">
+            Einstellungen
+          </Link>
         </div>
       </IonContent>
     </IonPage>

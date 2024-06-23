@@ -60,10 +60,19 @@
     }
   }
 
-  a#databaseLink {
-    margin-top: 40px;
+  a {
     color: var(--text-light);
     text-decoration: unset;
+
+    &#databaseLink {
+      margin-top: 20px;
+    }
+
+    &#settingsLink {
+      position: absolute;
+      bottom: 20px;
+      font-size: 0.8rem;
+    }
   }
 }
 

@@ -3,12 +3,14 @@ import { IonApp, IonRouterOutlet, setupIonicReact } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
 import { StatusBar, Style } from "@capacitor/status-bar";
 import PouchDB from "pouchdb-browser";
+import PouchDBAuth from "pouchdb-authentication";
 import { Provider } from "use-pouchdb";
 
 import Home from "./pages/Home";
 import Writer from "./pages/Writer";
 import Database from "./pages/Database";
 import Auth from "./pages/Auth";
+import Settings from "./pages/Settings";
 
 /* Core CSS required for Ionic components to work properly */
 import "@ionic/react/css/core.css";
@@ -51,6 +53,7 @@ setupIonicReact({ mode: "ios" });
 StatusBar.setStyle({ style: Style.Light });
 StatusBar.setBackgroundColor({ color: "#f1f3f4" });
 
+PouchDB.plugin(PouchDBAuth);
 const database = new PouchDB("memoria");
 
 const App: React.FC = () => (
@@ -66,6 +69,9 @@ const App: React.FC = () => (
           </Route>
           <Route exact path="/database">
             <Database />
+          </Route>
+          <Route exact path="/settings">
+            <Settings />
           </Route>
           <Route exact path="/">
             {/* <Redirect to="/home" /> */}
