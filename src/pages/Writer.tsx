@@ -68,14 +68,14 @@ const Writer: React.FC = () => {
             rows={1}
             autoGrow
             value={title}
-            onIonChange={(event) => setTitle(event.target.value || "")}
+            onIonInput={(event) => setTitle(event.target.value || "")}
           />
           <IonTextarea
             placeholder="Schreibe etwas..."
             autoGrow
             autoFocus
             value={body}
-            onIonChange={(event) => setBody(event.target.value || "")}
+            onIonInput={(event) => setBody(event.target.value || "")}
           />
         </div>
 
