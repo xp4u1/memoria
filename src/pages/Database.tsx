@@ -76,6 +76,10 @@ const Database: React.FC = () => {
             placeholder="Einträge suchen"
           />
 
+          {allDocsResult.state === "loading" && (
+            <p>Einträge werden geladen...</p>
+          )}
+
           {visibleRows.map((row) => (
             <DatabaseEntryCard key={row.id} document={row.doc} />
           ))}
