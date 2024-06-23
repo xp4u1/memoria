@@ -70,13 +70,15 @@ const Home: React.FC = () => {
     const now = new Date();
 
     // Fails (without error) if the document already exists.
-    pouch.put({
-      _id: id,
-      title: title,
-      body: "",
-      createdAt: now.toISOString(),
-      updatedAt: now.toISOString(),
-    });
+    pouch
+      .put({
+        _id: id,
+        title: title,
+        body: "",
+        createdAt: now.toISOString(),
+        updatedAt: now.toISOString(),
+      })
+      .catch(() => {});
 
     router.push("/writer/" + id);
   };
