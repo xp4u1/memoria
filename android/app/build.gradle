@@ -1,10 +1,10 @@
 apply plugin: 'com.android.application'
 
 android {
-    namespace "de.xp4u1.discite"
+    namespace "de.xp4u1.memoria"
     compileSdk rootProject.ext.compileSdkVersion
     defaultConfig {
-        applicationId "de.xp4u1.discite"
+        applicationId "de.xp4u1.memoria"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

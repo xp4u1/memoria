@@ -1,4 +1,4 @@
-package de.xp4u1.discite;
+package de.xp4u1.memoria;
 
 import com.getcapacitor.BridgeActivity;
 
