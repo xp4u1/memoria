@@ -13,4 +13,28 @@
   ion-infinite-scroll-content {
     margin-top: 20px;
   }
+
+  section.cards {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    ion-card {
+      margin-inline: 0;
+    }
+
+    @media (min-width: 768px) {
+      flex-flow: row wrap;
+      justify-content: space-between;
+
+      &::after {
+        content: "";
+        width: 32%;
+      }
+
+      ion-card {
+        width: 32%;
+      }
+    }
+  }
 }

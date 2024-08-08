@@ -3,6 +3,7 @@
   flex-flow: column;
   align-items: center;
   padding: 0 1rem;
+  height: 100%;
 
   header {
     display: flex;
@@ -33,30 +34,53 @@
     margin-top: 2.5rem;
     align-self: flex-start;
     font-weight: 500;
+
+    @media (min-width: 768px) {
+      align-self: center;
+      font-size: 1rem;
+      letter-spacing: inherit;
+    }
   }
 
-  section.card {
-    background: white;
+  section.cardContainer {
     width: 100%;
-    border-radius: 0.8rem;
     display: flex;
     flex-flow: column;
-    justify-content: center;
-    align-items: center;
-    padding: 1.5rem;
-    margin-top: 15px;
 
-    h1 {
-      font-weight: 800;
-      font-size: 1.3rem;
-      margin: 0;
-      margin-bottom: 0.5rem;
+    .card {
+      background: white;
+      width: 100%;
+      border-radius: 0.8rem;
+      display: flex;
+      flex-flow: column;
+      justify-content: center;
+      align-items: center;
+      padding: 1.5rem;
+      margin-top: 15px;
+
+      h1 {
+        font-weight: 800;
+        font-size: 1.3rem;
+        margin: 0;
+        margin-bottom: 0.5rem;
+      }
+
+      p {
+        margin: 0;
+        font-size: 0.8rem;
+        color: var(--text-light);
+        text-align: center;
+      }
+
+      @media (min-width: 768px) {
+        max-width: 48%;
+      }
     }
 
-    p {
-      margin: 0;
-      font-size: 0.8rem;
-      color: var(--text-light);
+    @media (min-width: 768px) {
+      flex-flow: row;
+      justify-content: space-between;
+      max-width: 500px;
     }
   }
 
@@ -66,11 +90,26 @@
 
     &#databaseLink {
       margin-top: 20px;
+
+      // Box style for larger screens
+      @media (min-width: 768px) and (min-height: 384px) {
+        background: white;
+        width: 100%;
+        border-radius: 0.8rem;
+        padding: 1rem;
+        max-width: 500px;
+        margin-bottom: 100px;
+
+        font-weight: 800;
+        font-size: 1rem;
+        color: inherit;
+        text-align: center;
+      }
     }
 
     &#settingsLink {
-      position: absolute;
-      bottom: 20px;
+      margin-top: auto;
+      padding-bottom: 25px;
       font-size: 0.8rem;
     }
   }

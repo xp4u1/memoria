@@ -155,13 +155,15 @@ const Home: React.FC = () => {
 
           <h1 className="sectionHeader">{t("Journal")}</h1>
 
-          <section className="card" onClick={decideReflectionPrompt}>
-            <h1>{t("Reflection")}</h1>
-            <p>{t("What happened today?")}</p>
-          </section>
-          <section className="card" id="addMemoryTrigger">
-            <h1>{t("Memories")}</h1>
-            <p>{t("Capture thoughts and feelings")}</p>
+          <section className="cardContainer">
+            <div className="card" onClick={decideReflectionPrompt}>
+              <h1>{t("Reflection")}</h1>
+              <p>{t("What happened today?")}</p>
+            </div>
+            <div className="card" id="addMemoryTrigger">
+              <h1>{t("Memories")}</h1>
+              <p>{t("Capture thoughts and feelings")}</p>
+            </div>
           </section>
 
           <Link id="databaseLink" to="/database">

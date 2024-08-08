@@ -83,9 +83,11 @@ const Database: React.FC = () => {
             <p>{t('Loading entries...')}</p>
           )}
 
-          {visibleRows.map((row) => (
-            <DatabaseEntryCard key={row.id} document={row.doc} />
-          ))}
+          <section className="cards">
+            {visibleRows.map((row) => (
+              <DatabaseEntryCard key={row.id} document={row.doc} />
+            ))}
+          </section>
 
           <IonInfiniteScroll
             onIonInfinite={(event) => {
