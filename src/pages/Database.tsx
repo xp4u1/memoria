@@ -12,12 +12,15 @@ import {
 } from "@ionic/react";
 import { useAllDocs } from "use-pouchdb";
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 import "./Database.scss";
 import DatabaseEntryCard from "../components/DatabaseEntryCard";
 import { Entry } from "../data/entry";
 
 const Database: React.FC = () => {
+  const { t } = useTranslation();
+
   const allDocsResult = useAllDocs({
     include_docs: true,
     descending: true,
@@ -61,7 +64,7 @@ const Database: React.FC = () => {
     <IonPage id="databasePage">
       <IonHeader className="ion-no-border">
         <IonToolbar>
-          <IonTitle>Datenbank</IonTitle>
+          <IonTitle>{t("Datenbank")}</IonTitle>
 
           <IonButtons slot="start">
             <IonBackButton color="dark" text="" defaultHref="/home" />
@@ -73,11 +76,11 @@ const Database: React.FC = () => {
         <div className="container">
           <IonSearchbar
             onIonInput={(event) => setQuery(event.detail.value || "")}
-            placeholder="Einträge suchen"
+            placeholder={t("Einträge suchen")}
           />
 
           {allDocsResult.state === "loading" && (
-            <p>Einträge werden geladen...</p>
+            <p>{t("Einträge werden geladen...")}</p>
           )}
 
           {visibleRows.map((row) => (

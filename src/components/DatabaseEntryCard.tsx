@@ -14,10 +14,13 @@ import {
 } from "@ionic/react";
 import { pencil, trash } from "ionicons/icons";
 import { usePouch } from "use-pouchdb";
+import { useTranslation } from "react-i18next";
 
 import "./DatabaseEntryCard.scss";
 
 const DatabaseEntryCard: React.FC<{ document: any }> = ({ document }) => {
+  const { t } = useTranslation();
+
   const router = useIonRouter();
   const pouch = usePouch();
 
@@ -33,18 +36,18 @@ const DatabaseEntryCard: React.FC<{ document: any }> = ({ document }) => {
     <IonCard>
       <IonAlert
         trigger={"removeDocumentTrigger-" + document._id}
-        header="Eintrag löschen"
-        message="Diese Aktion kann nicht rückgängig gemacht werden."
+        header={t("Eintrag löschen")}
+        message={t("Diese Aktion kann nicht rückgängig gemacht werden.")}
         buttons={[
-          { text: "Abbrechen", role: "cancel" },
-          { text: "Löschen", handler: removeDocument },
+          { text: t("Abbrechen"), role: "cancel" },
+          { text: t("Löschen"), handler: removeDocument },
         ]}
       />
 
       <IonCardHeader>
         <IonCardTitle>{document.title}</IonCardTitle>
         <IonCardSubtitle>
-          {new Date(document.createdAt).toLocaleDateString("de-DE")}
+          {new Date(document.createdAt).toLocaleDateString()}
         </IonCardSubtitle>
       </IonCardHeader>
       <IonCardContent>
@@ -52,7 +55,7 @@ const DatabaseEntryCard: React.FC<{ document: any }> = ({ document }) => {
           <IonRow>
             <IonCol>
               <IonButton onClick={editDocument} color="dark" size="small">
-                Öffnen
+                {t("Öffnen")}
               </IonButton>
             </IonCol>
             <IonCol className="actionButtons">

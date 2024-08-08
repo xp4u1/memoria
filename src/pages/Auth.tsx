@@ -10,10 +10,13 @@ import {
   BiometricAuth,
   BiometryError,
 } from "@aparajita/capacitor-biometric-auth";
+import { Trans, useTranslation } from "react-i18next";
 
 import "./Auth.scss";
 
 const Auth: React.FC = () => {
+  const { t } = useTranslation();
+
   const router = useIonRouter();
   const [message, setMessage] = useState("");
   const [showToast, setShowToast] = useState(false);
@@ -31,13 +34,13 @@ const Auth: React.FC = () => {
 
     try {
       await BiometricAuth.authenticate({
-        androidTitle: "Entsperre memoria",
-        cancelTitle: "Abbrechen",
+        androidTitle: t("Entsperre memoria"),
+        cancelTitle: t("Abbrechen"),
       });
       navigateHome();
     } catch (error) {
       console.error((error as BiometryError).message);
-      setMessage("Ein Fehler ist aufgetreten. Versuche es erneut!");
+      setMessage(t("Ein Fehler ist aufgetreten. Versuche es erneut!"));
       setShowToast(true);
     }
   };
@@ -57,9 +60,11 @@ const Auth: React.FC = () => {
             message={message}
           />
 
-          <h1>App entsperren</h1>
+          <h1>{t("App entsperren")}</h1>
           <p onClick={authenticate}>
-            Klicke <b>hier</b>, um die App zu entsperren.
+            <Trans t={t}>
+              Klicke <b>hier</b>, um die App zu entsperren.
+            </Trans>
           </p>
         </div>
       </IonContent>

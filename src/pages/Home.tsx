@@ -2,7 +2,9 @@ import { IonAlert, IonContent, IonPage, useIonRouter } from "@ionic/react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { usePouch } from "use-pouchdb";
+import { useTranslation } from "react-i18next";
 
+import i18n from "../i18n";
 import "./Home.scss";
 import WeekView from "../components/WeekView";
 import { generateMemoryID, generateReflectionID } from "../data/entry";
@@ -10,21 +12,21 @@ import { generateMemoryID, generateReflectionID } from "../data/entry";
 const getGreeting = () => {
   const hours = new Date().getHours();
 
-  if (hours >= 5 && hours < 11) return "guten morgen.";
-  if (hours >= 11 && hours < 18) return "guten tag.";
+  if (hours >= 5 && hours < 11) return i18n.t("guten morgen.");
+  if (hours >= 11 && hours < 18) return i18n.t("guten tag.");
 
-  return "guten abend.";
+  return i18n.t("guten abend.");
 };
 
 const getWeekday = (date: Date) => {
   const days = [
-    "Sonntag",
-    "Montag",
-    "Dienstag",
-    "Mittwoch",
-    "Donnerstag",
-    "Freitag",
-    "Samstag",
+    i18n.t("Sonntag"),
+    i18n.t("Montag"),
+    i18n.t("Dienstag"),
+    i18n.t("Mittwoch"),
+    i18n.t("Donnerstag"),
+    i18n.t("Freitag"),
+    i18n.t("Samstag"),
   ];
 
   return days[date.getDay()];
@@ -32,18 +34,18 @@ const getWeekday = (date: Date) => {
 
 const getDate = (date: Date) => {
   const months = [
-    "Januar",
-    "Februar",
-    "März",
-    "April",
-    "Mai",
-    "Juni",
-    "Juli",
-    "August",
-    "September",
-    "Oktober",
-    "November",
-    "Dezember",
+    i18n.t("Januar"),
+    i18n.t("Februar"),
+    i18n.t("März"),
+    i18n.t("April"),
+    i18n.t("Mai"),
+    i18n.t("Juni"),
+    i18n.t("Juli"),
+    i18n.t("August"),
+    i18n.t("September"),
+    i18n.t("Oktober"),
+    i18n.t("November"),
+    i18n.t("Dezember"),
   ];
 
   return `${getWeekday(date)}, ${date.getDate()}. ${months[date.getMonth()]}`;
@@ -61,6 +63,8 @@ const yesterday = () => {
 };
 
 const Home: React.FC = () => {
+  const { t } = useTranslation();
+
   const router = useIonRouter();
   const pouch = usePouch();
 
@@ -113,11 +117,11 @@ const Home: React.FC = () => {
       <IonContent fullscreen>
         <IonAlert
           trigger="addMemoryTrigger"
-          header="Eintrag erstellen"
-          message="Willst du eine neue Erinnerung hinzufügen?"
+          header={t("Eintrag erstellen")}
+          message={t("Willst du eine neue Erinnerung hinzufügen?")}
           buttons={[
-            { text: "Abbrechen", role: "cancel" },
-            { text: "Erstellen", handler: openNewMemory },
+            { text: t("Abbrechen"), role: "cancel" },
+            { text: t("Erstellen"), handler: openNewMemory },
           ]}
         />
 
@@ -125,8 +129,8 @@ const Home: React.FC = () => {
           isOpen={showReflectionPrompt}
           onDidDismiss={() => setShowReflectionPrompt(false)}
           className="dayPrompt"
-          header="Eintrag erstellen"
-          message="Für welchen Tag soll ein Eintrag erstellt werden?"
+          header={t("Eintrag erstellen")}
+          message={t("Für welchen Tag soll ein Eintrag erstellt werden?")}
           buttons={[
             {
               text: getWeekday(yesterday()),
@@ -149,25 +153,25 @@ const Home: React.FC = () => {
 
           {/* ------- */}
 
-          <h1 className="sectionHeader">Tagebuch</h1>
+          <h1 className="sectionHeader">{t("Tagebuch")}</h1>
 
           <section className="card" onClick={decideReflectionPrompt}>
-            <h1>Reflektion</h1>
-            <p>Was ist heute passiert?</p>
+            <h1>{t("Reflektion")}</h1>
+            <p>{t("Was ist heute passiert?")}</p>
           </section>
           <section className="card" id="addMemoryTrigger">
-            <h1>Erinnerungen</h1>
-            <p>Gedanken und Gefühle festhalten</p>
+            <h1>{t("Erinnerungen")}</h1>
+            <p>{t("Gedanken und Gefühle festhalten")}</p>
           </section>
 
           <Link id="databaseLink" to="/database">
-            Datenbank öffnen
+            {t("Datenbank öffnen")}
           </Link>
 
           {/* ------- */}
 
           <Link id="settingsLink" to="/settings">
-            Einstellungen
+            {t("Einstellungen")}
           </Link>
         </div>
       </IonContent>

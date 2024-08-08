@@ -11,12 +11,15 @@ import {
 import { checkmark } from "ionicons/icons";
 import { useParams } from "react-router";
 import { usePouch } from "use-pouchdb";
+import { useTranslation } from "react-i18next";
 
 import "./Writer.scss";
 import { Entry } from "../data/entry";
 import { useState } from "react";
 
 const Writer: React.FC = () => {
+  const { t } = useTranslation();
+
   const { id } = useParams<{ id: string }>();
   const router = useIonRouter();
   const pouch = usePouch();
@@ -64,14 +67,14 @@ const Writer: React.FC = () => {
         <div className="container">
           <IonTextarea
             className="title"
-            placeholder="Unbenannt"
+            placeholder={t("Unbenannt")}
             rows={1}
             autoGrow
             value={title}
             onIonInput={(event) => setTitle(event.target.value || "")}
           />
           <IonTextarea
-            placeholder="Schreibe etwas..."
+            placeholder={t("Schreibe etwas...")}
             autoGrow
             autoFocus
             value={body}

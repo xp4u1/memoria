@@ -14,6 +14,7 @@ import {
 } from "@ionic/react";
 import { useEffect, useState } from "react";
 import { usePouch } from "use-pouchdb";
+import { useTranslation } from "react-i18next";
 
 import "./Settings.scss";
 import {
@@ -24,6 +25,8 @@ import {
 } from "../data/remote";
 
 const Settings: React.FC = () => {
+  const { t } = useTranslation();
+
   const pouch = usePouch();
 
   const [credentialsLoaded, setCredentialsLoaded] = useState(false);
@@ -61,14 +64,14 @@ const Settings: React.FC = () => {
   const sync = () => {
     setToast({
       showToast: true,
-      message: "Verbindung wird hergestellt...",
+      message: t("Verbindung wird hergestellt..."),
       color: "light",
     });
     syncDatabase(pouch, credentials())
       .then(() => {
         setToast({
           showToast: true,
-          message: "Die Datenbank wurde synchronisiert.",
+          message: t("Die Datenbank wurde synchronisiert."),
           color: "success",
         });
       })
@@ -76,7 +79,7 @@ const Settings: React.FC = () => {
         console.error(error);
         setToast({
           showToast: true,
-          message: error.reason || "Ein Fehler ist aufgetreten.",
+          message: error.reason || t("Ein Fehler ist aufgetreten."),
           color: "danger",
         });
       });
@@ -96,7 +99,7 @@ const Settings: React.FC = () => {
 
       <IonHeader className="ion-no-border">
         <IonToolbar>
-          <IonTitle>Einstellungen</IonTitle>
+          <IonTitle>{t("Einstellungen")}</IonTitle>
 
           <IonButtons slot="start">
             <IonBackButton color="dark" text="" defaultHref="/home" />
@@ -107,15 +110,15 @@ const Settings: React.FC = () => {
       <IonContent fullscreen>
         <div id="container">
           <p>
-            Memoria kann sich mit jeder CouchDB kompatiblen Datenbank verbinden.
-            Dies ist optional, die App funktioniert auch ohne Verbindung zu
-            einer Datenbank. Jedoch ist eine Datensicherung empfehlenswert.
+            {t(
+              "Memoria kann sich mit jeder CouchDB kompatiblen Datenbank verbinden. Dies ist optional, die App funktioniert auch ohne Verbindung zu einer Datenbank. Jedoch ist eine Datensicherung empfehlenswert."
+            )}
           </p>
 
           <IonList>
             <IonItem>
               <IonInput
-                label="Server"
+                label={t("Server")}
                 placeholder="http://localhost:5984/memoria"
                 labelPlacement="fixed"
                 value={address}
@@ -126,7 +129,7 @@ const Settings: React.FC = () => {
             </IonItem>
             <IonItem>
               <IonInput
-                label="Benutzer"
+                label={t("Benutzer")}
                 placeholder="paul"
                 labelPlacement="fixed"
                 value={username}
@@ -137,7 +140,7 @@ const Settings: React.FC = () => {
             </IonItem>
             <IonItem>
               <IonInput
-                label="Passwort"
+                label={t("Passwort")}
                 placeholder="*******"
                 type="password"
                 labelPlacement="fixed"
@@ -149,7 +152,7 @@ const Settings: React.FC = () => {
             </IonItem>
 
             <p onClick={sync} style={{ cursor: "pointer" }}>
-              <b>Synchronisierung starten</b>
+              <b>{t("Synchronisierung starten")}</b>
             </p>
           </IonList>
         </div>
