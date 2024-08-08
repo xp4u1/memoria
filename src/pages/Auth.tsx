@@ -34,13 +34,13 @@ const Auth: React.FC = () => {
 
     try {
       await BiometricAuth.authenticate({
-        androidTitle: t("Entsperre memoria"),
-        cancelTitle: t("Abbrechen"),
+        androidTitle: t("Unlock memoria"),
+        cancelTitle: t("Cancel"),
       });
       navigateHome();
     } catch (error) {
       console.error((error as BiometryError).message);
-      setMessage(t("Ein Fehler ist aufgetreten. Versuche es erneut!"));
+      setMessage(t("An error occurred. Please try again!"));
       setShowToast(true);
     }
   };
@@ -60,10 +60,10 @@ const Auth: React.FC = () => {
             message={message}
           />
 
-          <h1>{t("App entsperren")}</h1>
+          <h1>{t("Unlock app")}</h1>
           <p onClick={authenticate}>
             <Trans t={t}>
-              Klicke <b>hier</b>, um die App zu entsperren.
+              Click <b>here</b> to unlock the app.
             </Trans>
           </p>
         </div>

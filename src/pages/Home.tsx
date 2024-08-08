@@ -12,21 +12,21 @@ import { generateMemoryID, generateReflectionID } from "../data/entry";
 const getGreeting = () => {
   const hours = new Date().getHours();
 
-  if (hours >= 5 && hours < 11) return i18n.t("guten morgen.");
-  if (hours >= 11 && hours < 18) return i18n.t("guten tag.");
+  if (hours >= 5 && hours < 11) return i18n.t("good morning.");
+  if (hours >= 11 && hours < 18) return i18n.t("good day.");
 
-  return i18n.t("guten abend.");
+  return i18n.t("good evening.");
 };
 
 const getWeekday = (date: Date) => {
   const days = [
-    i18n.t("Sonntag"),
-    i18n.t("Montag"),
-    i18n.t("Dienstag"),
-    i18n.t("Mittwoch"),
-    i18n.t("Donnerstag"),
-    i18n.t("Freitag"),
-    i18n.t("Samstag"),
+    i18n.t("Sunday"),
+    i18n.t("Monday"),
+    i18n.t("Tuesday"),
+    i18n.t("Wednesday"),
+    i18n.t("Thursday"),
+    i18n.t("Friday"),
+    i18n.t("Saturday"),
   ];
 
   return days[date.getDay()];
@@ -34,18 +34,18 @@ const getWeekday = (date: Date) => {
 
 const getDate = (date: Date) => {
   const months = [
-    i18n.t("Januar"),
-    i18n.t("Februar"),
-    i18n.t("März"),
+    i18n.t("January"),
+    i18n.t("February"),
+    i18n.t("March"),
     i18n.t("April"),
-    i18n.t("Mai"),
-    i18n.t("Juni"),
-    i18n.t("Juli"),
+    i18n.t("May"),
+    i18n.t("June"),
+    i18n.t("July"),
     i18n.t("August"),
     i18n.t("September"),
-    i18n.t("Oktober"),
+    i18n.t("October"),
     i18n.t("November"),
-    i18n.t("Dezember"),
+    i18n.t("December"),
   ];
 
   return `${getWeekday(date)}, ${date.getDate()}. ${months[date.getMonth()]}`;
@@ -117,11 +117,11 @@ const Home: React.FC = () => {
       <IonContent fullscreen>
         <IonAlert
           trigger="addMemoryTrigger"
-          header={t("Eintrag erstellen")}
-          message={t("Willst du eine neue Erinnerung hinzufügen?")}
+          header={t("Create entry")}
+          message={t("Do you want to add a new memory?")}
           buttons={[
-            { text: t("Abbrechen"), role: "cancel" },
-            { text: t("Erstellen"), handler: openNewMemory },
+            { text: t("Cancel"), role: "cancel" },
+            { text: t("Create"), handler: openNewMemory },
           ]}
         />
 
@@ -129,8 +129,8 @@ const Home: React.FC = () => {
           isOpen={showReflectionPrompt}
           onDidDismiss={() => setShowReflectionPrompt(false)}
           className="dayPrompt"
-          header={t("Eintrag erstellen")}
-          message={t("Für welchen Tag soll ein Eintrag erstellt werden?")}
+          header={t("Create entry")}
+          message={t("For which day should an entry be created?")}
           buttons={[
             {
               text: getWeekday(yesterday()),
@@ -153,25 +153,25 @@ const Home: React.FC = () => {
 
           {/* ------- */}
 
-          <h1 className="sectionHeader">{t("Tagebuch")}</h1>
+          <h1 className="sectionHeader">{t("Journal")}</h1>
 
           <section className="card" onClick={decideReflectionPrompt}>
-            <h1>{t("Reflektion")}</h1>
-            <p>{t("Was ist heute passiert?")}</p>
+            <h1>{t("Reflection")}</h1>
+            <p>{t("What happened today?")}</p>
           </section>
           <section className="card" id="addMemoryTrigger">
-            <h1>{t("Erinnerungen")}</h1>
-            <p>{t("Gedanken und Gefühle festhalten")}</p>
+            <h1>{t("Memories")}</h1>
+            <p>{t("Capture thoughts and feelings")}</p>
           </section>
 
           <Link id="databaseLink" to="/database">
-            {t("Datenbank öffnen")}
+            {t("Open database")}
           </Link>
 
           {/* ------- */}
 
           <Link id="settingsLink" to="/settings">
-            {t("Einstellungen")}
+            {t("Settings")}
           </Link>
         </div>
       </IonContent>

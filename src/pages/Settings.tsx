@@ -64,14 +64,14 @@ const Settings: React.FC = () => {
   const sync = () => {
     setToast({
       showToast: true,
-      message: t("Verbindung wird hergestellt..."),
+      message: t("Connecting..."),
       color: "light",
     });
     syncDatabase(pouch, credentials())
       .then(() => {
         setToast({
           showToast: true,
-          message: t("Die Datenbank wurde synchronisiert."),
+          message: t("The database has been synchronized."),
           color: "success",
         });
       })
@@ -79,7 +79,7 @@ const Settings: React.FC = () => {
         console.error(error);
         setToast({
           showToast: true,
-          message: error.reason || t("Ein Fehler ist aufgetreten."),
+          message: error.reason || t("An error occurred."),
           color: "danger",
         });
       });
@@ -99,7 +99,7 @@ const Settings: React.FC = () => {
 
       <IonHeader className="ion-no-border">
         <IonToolbar>
-          <IonTitle>{t("Einstellungen")}</IonTitle>
+          <IonTitle>{t("Settings")}</IonTitle>
 
           <IonButtons slot="start">
             <IonBackButton color="dark" text="" defaultHref="/home" />
@@ -111,7 +111,7 @@ const Settings: React.FC = () => {
         <div id="container">
           <p>
             {t(
-              "Memoria kann sich mit jeder CouchDB kompatiblen Datenbank verbinden. Dies ist optional, die App funktioniert auch ohne Verbindung zu einer Datenbank. Jedoch ist eine Datensicherung empfehlenswert."
+              "Memoria can connect to any CouchDB-compatible database. This is optional; the app works without a database connection. However, a backup is recommended."
             )}
           </p>
 
@@ -129,7 +129,7 @@ const Settings: React.FC = () => {
             </IonItem>
             <IonItem>
               <IonInput
-                label={t("Benutzer")}
+                label={t("User")}
                 placeholder="paul"
                 labelPlacement="fixed"
                 value={username}
@@ -140,7 +140,7 @@ const Settings: React.FC = () => {
             </IonItem>
             <IonItem>
               <IonInput
-                label={t("Passwort")}
+                label={t("Password")}
                 placeholder="*******"
                 type="password"
                 labelPlacement="fixed"
@@ -152,7 +152,7 @@ const Settings: React.FC = () => {
             </IonItem>
 
             <p onClick={sync} style={{ cursor: "pointer" }}>
-              <b>{t("Synchronisierung starten")}</b>
+              <b>{t("Start synchronization")}</b>
             </p>
           </IonList>
         </div>
