@@ -4,13 +4,13 @@ import "./WeekView.scss";
 
 const getCurrentWeek = () => {
   const days = [
-    i18n.t('Mon'),
-    i18n.t('Tue'),
-    i18n.t('Wed'),
-    i18n.t('Thu'),
-    i18n.t('Fri'),
-    i18n.t('Sat'),
-    i18n.t('Sun'),
+    i18n.t("Mon"),
+    i18n.t("Tue"),
+    i18n.t("Wed"),
+    i18n.t("Thu"),
+    i18n.t("Fri"),
+    i18n.t("Sat"),
+    i18n.t("Sun"),
   ];
   const today = new Date();
   const currentDayIndex = (today.getDay() + 6) % 7; // Monday should be the first day.

@@ -36,11 +36,11 @@ const DatabaseEntryCard: React.FC<{ document: any }> = ({ document }) => {
     <IonCard>
       <IonAlert
         trigger={"removeDocumentTrigger-" + document._id}
-        header={t('Delete entry')}
-        message={t('This action cannot be undone.')}
+        header={t("Delete entry")}
+        message={t("This action cannot be undone.")}
         buttons={[
-          { text: t('Cancel'), role: "cancel" },
-          { text: t('Delete'), handler: removeDocument },
+          { text: t("Cancel"), role: "cancel" },
+          { text: t("Delete"), handler: removeDocument },
         ]}
       />
 
@@ -55,7 +55,7 @@ const DatabaseEntryCard: React.FC<{ document: any }> = ({ document }) => {
           <IonRow>
             <IonCol>
               <IonButton onClick={editDocument} color="dark" size="small">
-                {t('Open')}
+                {t("Open")}
               </IonButton>
             </IonCol>
             <IonCol className="actionButtons">

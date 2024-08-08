@@ -64,7 +64,7 @@ const Database: React.FC = () => {
     <IonPage id="databasePage">
       <IonHeader className="ion-no-border">
         <IonToolbar>
-          <IonTitle>{t('Database')}</IonTitle>
+          <IonTitle>{t("Database")}</IonTitle>
 
           <IonButtons slot="start">
             <IonBackButton color="dark" text="" defaultHref="/home" />
@@ -76,11 +76,11 @@ const Database: React.FC = () => {
         <div className="container">
           <IonSearchbar
             onIonInput={(event) => setQuery(event.detail.value || "")}
-            placeholder={t('Search entries')}
+            placeholder={t("Search entries")}
           />
 
           {allDocsResult.state === "loading" && (
-            <p>{t('Loading entries...')}</p>
+            <p>{t("Loading entries...")}</p>
           )}
 
           <section className="cards">
