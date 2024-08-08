@@ -9,7 +9,8 @@
     "preview": "vite preview",
     "test.e2e": "cypress run",
     "test.unit": "vitest",
-    "lint": "eslint"
+    "lint": "eslint",
+    "localize": "i18next"
   },
   "dependencies": {
     "@aparajita/capacitor-biometric-auth": "^8.0.0",
