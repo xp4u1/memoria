@@ -48,6 +48,9 @@ import "@fontsource/inter/800.css"; // Extra Bold
 /* Theme variables */
 import "./theme/variables.css";
 
+/* Localization */
+import "./i18n";
+
 setupIonicReact({ mode: "ios" });
 
 StatusBar.setStyle({ style: Style.Light });
