@@ -15,6 +15,7 @@ const resources = {
 
 i18n.use(initReactI18next).init({
   resources,
+  lng: navigator.language.split("-")[0],
   fallbackLng: "en",
   interpolation: {
     escapeValue: false,
