@@ -10,7 +10,7 @@
     flex-flow: column;
     align-items: center;
 
-    margin-top: 3rem;
+    margin-top: calc(env(safe-area-inset-top) + 3rem);
 
     h1 {
       font-weight: 800;
