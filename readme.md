@@ -4,6 +4,13 @@
 
 Frustrated with endless subscriptions and the unpredictability of closed-source apps? Longing for a diary that is as private as it is stylish? **memoria** offers a minimalist, modern design where your data remains with you — no analytics, no tracking, and fully self-hostable. You can trust that your diary will stay accessible and secure, thanks to its open-source nature, which ensures that your memories are protected and the app remains reliable over time.
 
+- **Offline First Approach:** Enjoy full functionality without needing an internet connection.
+- **Optional Sync:** Seamlessly sync your data with a self-hosted server, only if you choose to.
+- **No Registration Required:** Start using the app instantly — no account creation needed.
+- **No Tracking:** Your data remains your own — no tracking, ever.
+- **Biometric Login:** Quickly and securely access your app with biometric authentication.
+- **No Distraction:** A clean, minimalistic interface that helps you stay focused on what matters.
+
 ## Installation
 
 <div align="center">
