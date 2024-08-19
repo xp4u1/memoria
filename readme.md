@@ -7,10 +7,10 @@ Frustrated with endless subscriptions and the unpredictability of closed-source 
 ## Installation
 
 <div align="center">
-  <a href="#">
+  <a href="https://play.google.com/store/apps/details?id=de.xp4u1.memoria">
     <img alt="Get it on Google Play" src="./.github/playstore.png" width="140">
   </a>
-  <a href="#">
+  <a href="https://apps.apple.com/us/app/memoria-private-journal/id6621187886">
     <img alt="Download on the App Store" src="./.github/appstore.png" width="140">
   </a>
 </div>
