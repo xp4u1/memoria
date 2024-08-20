@@ -39,6 +39,14 @@ $ yarn dev
 
 You can now access **memoria** in your browser at `http://localhost:5173`.
 
+## Is it free?
+
+Yes, **memoria** is free software, licensed under the AGPL-3.0.
+
+You can download the latest Android version from the [releases tab](https://github.com/xp4u1/memoria/releases) on GitHub at no cost. This is perfect for testing the app or if you're unable to make a purchase. However, please note that this version doesn't include automatic updates.
+
+With that in mind, I would greatly appreciate it if you would **consider purchasing the app** on [Google Play](https://play.google.com/store/apps/details?id=de.xp4u1.memoria) or the [App Store](https://apps.apple.com/us/app/memoria-private-journal/id6621187886), if you're able. Your one-time payment helps cover development expenses, app marketplace fees, and supports the ongoing growth of the project. Your support is essential for maintaining and enhancing **memoria**.
+
 ## Synchronization Server
 
 The app supports synchronization with any CouchDB-compatible databases, which can be either self-hosted or rented from a cloud provider.
