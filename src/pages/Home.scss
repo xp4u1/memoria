@@ -46,7 +46,12 @@
     width: 100%;
     display: flex;
     flex-flow: column;
-
+    .cardFirstRow{
+      display: flex;
+      flex-flow: row;
+      justify-content: space-between;
+      width: 100%;
+    }
     .card {
       background: white;
       width: 100%;
@@ -57,6 +62,12 @@
       align-items: center;
       padding: 1.5rem;
       margin-top: 15px;
+      cursor: pointer;
+      transition: box-shadow 0.3s ease;
+
+      &:hover {
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
 
       h1 {
         font-weight: 800;
@@ -92,19 +103,33 @@
       margin-top: 20px;
 
       // Box style for larger screens
-      @media (min-width: 768px) and (min-height: 384px) {
-        background: white;
-        width: 100%;
-        border-radius: 0.8rem;
-        padding: 1rem;
-        max-width: 500px;
-        margin-bottom: 100px;
+      background: white;
+      width: 100%;
+      border-radius: 0.8rem;
+      padding: 1.5rem;
+      margin-bottom: 100px;
+      color: inherit;
+      text-align: center;
+      cursor: pointer;
+      transition: box-shadow 0.3s ease;
 
-        font-weight: 800;
-        font-size: 1rem;
-        color: inherit;
-        text-align: center;
+      &:hover {
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
       }
+
+      h1 {
+        font-weight: 800;
+        font-size: 1.3rem;
+        margin: 0;
+        margin-bottom: 0.5rem;
+      }
+
+      p {
+        margin: 0;
+        font-size: 0.8rem;        
+        color: var(--text-light);
+        text-align: center;
+      }  
     }
 
     &#settingsLink {
@@ -119,7 +144,6 @@
 
 ion-alert.dayPrompt {
   button.alert-button:last-child {
-    // Override Ionic's "bold"
     font-weight: 400;
   }
 }
