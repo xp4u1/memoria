@@ -46,7 +46,7 @@
     width: 100%;
     display: flex;
     flex-flow: column;
-    .cardFirstRow{
+    .cardFirstRow {
       display: flex;
       flex-flow: row;
       justify-content: space-between;
@@ -126,10 +126,10 @@
 
       p {
         margin: 0;
-        font-size: 0.8rem;        
+        font-size: 0.8rem;
         color: var(--text-light);
         text-align: center;
-      }  
+      }
     }
 
     &#settingsLink {
@@ -140,7 +140,7 @@
   }
 }
 
-@import "../styles/alert";
+@import '../styles/alert';
 
 ion-alert.dayPrompt {
   button.alert-button:last-child {
