@@ -53,8 +53,8 @@ const Database: React.FC = () => {
         allDocsResult.rows.filter((row) =>
           (row.doc as unknown as Entry).title
             .toLowerCase()
-            .includes(query.toLowerCase())
-        )
+            .includes(query.toLowerCase()),
+        ),
       );
 
     setVisibleRows(rows.slice(0, 20));

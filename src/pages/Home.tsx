@@ -90,7 +90,7 @@ const Home: React.FC = () => {
   const openReflection = (date: Date) => {
     createAndNavigate(
       generateReflectionID(date),
-      `${getDate(date)} ${date.getFullYear()}`
+      `${getDate(date)} ${date.getFullYear()}`,
     );
   };
 

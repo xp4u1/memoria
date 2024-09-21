@@ -111,7 +111,7 @@ const Settings: React.FC = () => {
         <div id="container">
           <p>
             {t(
-              "Memoria can connect to any CouchDB-compatible database. This is optional; the app works without a database connection. However, a backup is recommended."
+              "Memoria can connect to any CouchDB-compatible database. This is optional; the app works without a database connection. However, a backup is recommended.",
             )}
           </p>
 

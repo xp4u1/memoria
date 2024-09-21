@@ -8,5 +8,5 @@ services:
       - COUCHDB_USER=admin
       - COUCHDB_PASSWORD=test
     volumes:
-        - ./data:/opt/couchdb/data
-        - ./config/memoria.ini:/opt/couchdb/etc/local.ini
+      - ./data:/opt/couchdb/data
+      - ./config/memoria.ini:/opt/couchdb/etc/local.ini
