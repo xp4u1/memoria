@@ -10,7 +10,8 @@
     "test.e2e": "cypress run",
     "test.unit": "vitest",
     "lint": "eslint",
-    "localize": "i18next"
+    "localize": "i18next",
+    "format": "prettier . --write"
   },
   "dependencies": {
     "@aparajita/capacitor-biometric-auth": "8.0.2",
@@ -59,6 +60,7 @@
     "eslint-plugin-react": "7.36.1",
     "i18next-parser": "9.0.2",
     "jsdom": "25.0.0",
+    "prettier": "^3.3.3",
     "sass": "1.79.3",
     "terser": "5.33.0",
     "typescript": "5.6.2",
