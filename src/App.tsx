@@ -53,8 +53,14 @@ import "./i18n";
 
 setupIonicReact({ mode: "ios" });
 
-StatusBar.setStyle({ style: Style.Light });
-StatusBar.setBackgroundColor({ color: "#f1f3f4" });
+new Promise(async () => {
+  try {
+    await StatusBar.setStyle({ style: Style.Light });
+    await StatusBar.setBackgroundColor({ color: "#f1f3f4" });
+  } catch {
+    // Ignore to supress errors while running the app in a browser.
+  }
+});
 
 PouchDB.plugin(PouchDBAuth);
 const database = new PouchDB("memoria");
