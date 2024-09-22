@@ -141,6 +141,7 @@ const Home: React.FC = () => {
               handler: () => openReflection(today()),
             },
           ]}
+          data-cy="dayPrompt"
         />
 
         <div id="container">
@@ -156,11 +157,19 @@ const Home: React.FC = () => {
           <h1 className="sectionHeader">{t("Journal")}</h1>
 
           <section className="cardContainer">
-            <div className="card" onClick={decideReflectionPrompt}>
+            <div
+              className="card"
+              onClick={decideReflectionPrompt}
+              data-cy="addReflectionButton"
+            >
               <h1>{t("Reflection")}</h1>
               <p>{t("What happened today?")}</p>
             </div>
-            <div className="card" id="addMemoryTrigger">
+            <div
+              className="card"
+              id="addMemoryTrigger"
+              data-cy="addMemoryButton"
+            >
               <h1>{t("Memories")}</h1>
               <p>{t("Capture thoughts and feelings")}</p>
             </div>

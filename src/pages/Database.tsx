@@ -83,7 +83,7 @@ const Database: React.FC = () => {
             <p>{t("Loading entries...")}</p>
           )}
 
-          <section className="cards">
+          <section className="cards" data-cy="databaseEntries">
             {visibleRows.map((row) => (
               <DatabaseEntryCard key={row.id} document={row.doc} />
             ))}

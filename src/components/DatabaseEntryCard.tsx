@@ -33,7 +33,7 @@ const DatabaseEntryCard: React.FC<{ document: any }> = ({ document }) => {
   };
 
   return (
-    <IonCard>
+    <IonCard data-id={document._id}>
       <IonAlert
         trigger={"removeDocumentTrigger-" + document._id}
         header={t("Delete entry")}
@@ -42,10 +42,11 @@ const DatabaseEntryCard: React.FC<{ document: any }> = ({ document }) => {
           { text: t("Cancel"), role: "cancel" },
           { text: t("Delete"), handler: removeDocument },
         ]}
+        data-cy="deletePrompt"
       />
 
       <IonCardHeader>
-        <IonCardTitle>{document.title}</IonCardTitle>
+        <IonCardTitle data-cy="title">{document.title}</IonCardTitle>
         <IonCardSubtitle>
           {new Date(document.createdAt).toLocaleDateString()}
         </IonCardSubtitle>
@@ -64,6 +65,7 @@ const DatabaseEntryCard: React.FC<{ document: any }> = ({ document }) => {
                 color="dark"
                 size="small"
                 fill="clear"
+                data-cy="editButton"
               >
                 <IonIcon icon={pencil} slot="icon-only" size="small" />
               </IonButton>
@@ -72,6 +74,7 @@ const DatabaseEntryCard: React.FC<{ document: any }> = ({ document }) => {
                 color="dark"
                 size="small"
                 fill="clear"
+                data-cy="deleteButton"
               >
                 <IonIcon icon={trash} slot="icon-only" size="small" />
               </IonButton>

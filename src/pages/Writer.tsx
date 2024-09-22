@@ -72,6 +72,7 @@ const Writer: React.FC = () => {
             autoGrow
             value={title}
             onIonInput={(event) => setTitle(event.target.value || "")}
+            data-cy="titleInput"
           />
           <IonTextarea
             placeholder={t("Write something...")}
@@ -83,7 +84,13 @@ const Writer: React.FC = () => {
         </div>
 
         <IonFab slot="fixed" horizontal="end" vertical="bottom">
-          <IonFabButton onClick={save} mode="ios" color="dark" size="small">
+          <IonFabButton
+            onClick={save}
+            mode="ios"
+            color="dark"
+            size="small"
+            data-cy="saveButton"
+          >
             <IonIcon icon={checkmark} />
           </IonFabButton>
         </IonFab>
