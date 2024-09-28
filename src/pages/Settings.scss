@@ -4,6 +4,10 @@
   // Input List
   --padding-start: 0;
   --ion-safe-area-left: 0;
+
+  p.muted {
+    color: var(--text-light);
+  }
 }
 
 @import "../styles/toast";

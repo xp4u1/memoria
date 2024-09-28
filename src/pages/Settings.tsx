@@ -23,6 +23,7 @@ import {
   setCredentials,
   syncDatabase,
 } from "../data/remote";
+import { getLastSync, setLastSync } from "../data/sync";
 
 const Settings: React.FC = () => {
   const { t } = useTranslation();
@@ -33,6 +34,7 @@ const Settings: React.FC = () => {
   const [address, setAddress] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [localLastSync, setLocalLastSync] = useState<Date | undefined>();
 
   const [toast, setToast] = useState({
     showToast: false,
@@ -53,6 +55,10 @@ const Settings: React.FC = () => {
       setPassword(credentials.password);
       setCredentialsLoaded(true);
     });
+    getLastSync().then((date) => {
+      if (date.toISOString() === "1970-01-01T00:00:00.000Z") return;
+      setLocalLastSync(date);
+    });
   });
 
   useEffect(() => {
@@ -67,6 +73,7 @@ const Settings: React.FC = () => {
       message: t("Connecting..."),
       color: "light",
     });
+
     syncDatabase(pouch, credentials())
       .then(() => {
         setToast({
@@ -74,6 +81,11 @@ const Settings: React.FC = () => {
           message: t("The database has been synchronized."),
           color: "success",
         });
+
+        // Update timestamp.
+        const now = new Date();
+        setLastSync(now);
+        setLocalLastSync(now);
       })
       .catch((error) => {
         console.error(error);
@@ -154,6 +166,16 @@ const Settings: React.FC = () => {
             <p onClick={sync} style={{ cursor: "pointer" }}>
               <b>{t("Start synchronization")}</b>
             </p>
+            {localLastSync && (
+              <p className="muted">
+                {t("Last synchronization on ")}
+                {localLastSync.toLocaleDateString()}{" "}
+                {localLastSync.toLocaleTimeString([], {
+                  hour: "2-digit",
+                  minute: "2-digit",
+                })}
+              </p>
+            )}
           </IonList>
         </div>
       </IonContent>
