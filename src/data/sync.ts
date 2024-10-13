@@ -1,6 +1,8 @@
 import { getPreference, setPreference } from "./preferences";
 import { getCredentials, syncDatabase } from "./remote";
 
+export let activeLiveSync = false;
+
 /**
  * Syncs with remote database and updates the last sync timestamp on success.
  * Does nothing if there are no credentials saved.
@@ -29,9 +31,15 @@ export const syncWithRemote = (
 };
 
 /**
- * This is equivalent to running `syncWithRemote` using live sync parameters.
+ * Checks if live sync is active. If it is, it does nothing.
+ *
+ * After setting `activeLiveSync`, this is equivalent to running
+ * `syncWithRemote` using live sync parameters.
  */
 export const startLiveSync = (database: any): Promise<void> => {
+  if (activeLiveSync) return Promise.resolve();
+
+  activeLiveSync = true;
   return syncWithRemote(database, {
     live: true,
     retry: true,
