@@ -74,7 +74,7 @@ const Settings: React.FC = () => {
       color: "light",
     });
 
-    syncDatabase(pouch, credentials())
+    syncDatabase(pouch, credentials(), {})
       .then(() => {
         setToast({
           showToast: true,

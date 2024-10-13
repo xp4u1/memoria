@@ -25,6 +25,7 @@ export const setCredentials = (credentials: Credentials) => {
 export const syncDatabase = async (
   database: any,
   credentials: Credentials,
+  options: PouchDB.Replication.SyncOptions,
 ): Promise<void> => {
   return new Promise((resolve: Function, reject: Function) => {
     const remote = new PouchDB(credentials.address, {
@@ -34,7 +35,7 @@ export const syncDatabase = async (
       .logIn(credentials.username, credentials.password)
       .then(() => {
         database
-          .sync(remote)
+          .sync(remote, options)
           .then(() => {
             resolve();
           })
