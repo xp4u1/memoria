@@ -1,4 +1,10 @@
-import { IonAlert, IonContent, IonPage, useIonRouter } from "@ionic/react";
+import {
+  IonAlert,
+  IonContent,
+  IonPage,
+  useIonRouter,
+  useIonViewWillEnter,
+} from "@ionic/react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { usePouch } from "use-pouchdb";
@@ -8,6 +14,7 @@ import i18n from "../i18n";
 import "./Home.scss";
 import WeekView from "../components/WeekView";
 import { generateMemoryID, generateReflectionID } from "../data/entry";
+import { startLiveSync } from "../data/sync";
 
 const getGreeting = () => {
   const hours = new Date().getHours();
@@ -69,6 +76,11 @@ const Home: React.FC = () => {
   const pouch = usePouch();
 
   const [showReflectionPrompt, setShowReflectionPrompt] = useState(false);
+
+  useIonViewWillEnter(() => {
+    // todo: notify the user when something goes wrong.
+    startLiveSync(pouch).catch((_error) => {});
+  });
 
   const createAndNavigate = (id: string, title: string) => {
     const now = new Date();
