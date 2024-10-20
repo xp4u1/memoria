@@ -48,7 +48,7 @@
     flex-flow: column;
 
     .card {
-      background: white;
+      background: var(--ion-color-card);
       width: 100%;
       border-radius: 0.8rem;
       display: flex;
@@ -68,7 +68,7 @@
       p {
         margin: 0;
         font-size: 0.8rem;
-        color: var(--text-light);
+        color: var(--ion-color-card-contrast);
         text-align: center;
       }
 
@@ -93,7 +93,7 @@
 
       // Box style for larger screens
       @media (min-width: 768px) and (min-height: 384px) {
-        background: white;
+        background: var(--ion-color-card);
         width: 100%;
         border-radius: 0.8rem;
         padding: 1rem;

@@ -6,7 +6,7 @@
   width: 100%;
 
   ion-searchbar {
-    --background: white;
+    --background: var(--ion-color-card);
     padding: 0;
   }
 
@@ -21,6 +21,7 @@
 
     ion-card {
       margin-inline: 0;
+      background: var(--ion-color-card);
     }
 
     @media (min-width: 768px) {

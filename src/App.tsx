@@ -35,9 +35,8 @@ import "@ionic/react/css/display.css";
  * https://ionicframework.com/docs/theming/dark-mode
  */
 
-/* import '@ionic/react/css/palettes/dark.always.css'; */
 /* import '@ionic/react/css/palettes/dark.class.css'; */
-// import "@ionic/react/css/palettes/dark.system.css"; TODO: add dark mode
+import "@ionic/react/css/palettes/dark.system.css";
 
 /* Font */
 import "@fontsource/inter/400.css"; // Regular
@@ -52,15 +51,6 @@ import "./theme/variables.css";
 import "./i18n";
 
 setupIonicReact({ mode: "ios" });
-
-new Promise(async () => {
-  try {
-    await StatusBar.setStyle({ style: Style.Light });
-    await StatusBar.setBackgroundColor({ color: "#f1f3f4" });
-  } catch {
-    // Ignore to supress errors while running the app in a browser.
-  }
-});
 
 PouchDB.plugin(PouchDBAuth);
 const database = new PouchDB("memoria");
