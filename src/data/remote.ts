@@ -30,21 +30,15 @@ export const syncDatabase = async (
   return new Promise((resolve: Function, reject: Function) => {
     const remote = new PouchDB(credentials.address, {
       skip_setup: true,
+      auth: {
+        username: credentials.username,
+        password: credentials.password,
+      },
     });
-    remote
-      .logIn(credentials.username, credentials.password)
-      .then(() => {
-        database
-          .sync(remote, options)
-          .then(() => {
-            resolve();
-          })
-          .catch((error: any) => {
-            reject(error);
-          });
-      })
-      .catch((error: any) => {
-        reject(error);
-      });
+
+    database
+      .sync(remote, options)
+      .then(resolve)
+      .catch((error: any) => reject(error));
   });
 };

@@ -3,7 +3,6 @@ import { IonApp, IonRouterOutlet, setupIonicReact } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
 import { StatusBar, Style } from "@capacitor/status-bar";
 import PouchDB from "pouchdb-browser";
-import PouchDBAuth from "pouchdb-authentication";
 import { Provider } from "use-pouchdb";
 
 import Home from "./pages/Home";
@@ -62,7 +61,6 @@ new Promise(async () => {
   }
 });
 
-PouchDB.plugin(PouchDBAuth);
 const database = new PouchDB("memoria");
 
 const App: React.FC = () => (
