@@ -42,6 +42,9 @@ const Settings: React.FC = () => {
     color: "",
   });
 
+  // Saves the id of the last timeout to cancel it if needed.
+  const [toastTimeout, setToastTimeout] = useState<any>();
+
   const credentials = (): Credentials => ({
     address: address,
     username: username,
@@ -67,6 +70,22 @@ const Settings: React.FC = () => {
     setCredentials(credentials());
   }, [address, username, password]);
 
+  const closeToastTimeout = () => {
+    // Extends timer if there is an active timeout.
+    clearTimeout(toastTimeout);
+
+    setToastTimeout(
+      setTimeout(
+        () =>
+          setToast({
+            ...toast,
+            showToast: false,
+          }),
+        2000,
+      ),
+    );
+  };
+
   const sync = () => {
     setToast({
       showToast: true,
@@ -81,6 +100,7 @@ const Settings: React.FC = () => {
           message: t("The database has been synchronized."),
           color: "success",
         });
+        closeToastTimeout();
 
         // Update timestamp.
         const now = new Date();
@@ -94,6 +114,7 @@ const Settings: React.FC = () => {
           message: error.reason || t("An error occurred."),
           color: "danger",
         });
+        closeToastTimeout();
       });
   };
 
@@ -103,7 +124,6 @@ const Settings: React.FC = () => {
         isOpen={toast.showToast}
         message={toast.message}
         color={toast.color}
-        duration={1000}
         onDidDismiss={() => {
           setToast({ ...toast, showToast: false });
         }}
