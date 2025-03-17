@@ -28,7 +28,10 @@ With the following steps, you can start **memoria** locally on your own computer
 
 ```
 # Clone repository
-$ git clone git@github.com:xp4u1/memoria
+$ git clone https://github.com/xp4u1/memoria.git
+
+# Change to new repo
+$ cd memoria
 
 # Install dependencies
 $ yarn
