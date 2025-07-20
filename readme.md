@@ -31,10 +31,10 @@ With the following steps, you can start **memoria** locally on your own computer
 $ git clone git@github.com:xp4u1/memoria
 
 # Install dependencies
-$ yarn
+$ pnpm install
 
 # Start development server
-$ yarn dev
+$ pnpm dev
 ```
 
 You can now access **memoria** in your browser at `http://localhost:5173`.

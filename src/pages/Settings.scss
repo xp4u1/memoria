@@ -1,3 +1,5 @@
+@use "../styles/toast";
+
 #settingsPage #container {
   padding: 1rem;
 
@@ -9,5 +11,3 @@
     color: var(--text-light);
   }
 }
-
-@import "../styles/toast";

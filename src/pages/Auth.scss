@@ -1,3 +1,5 @@
+@use "../styles/alert";
+
 #authPage #container {
   display: flex;
   flex-direction: column;
@@ -19,5 +21,3 @@
     color: var(--text-light);
   }
 }
-
-@import "../styles/alert";
