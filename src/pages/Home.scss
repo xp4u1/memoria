@@ -1,3 +1,5 @@
+@use "../styles/alert";
+
 #homePage #container {
   display: flex;
   flex-flow: column;
@@ -114,8 +116,6 @@
     }
   }
 }
-
-@import "../styles/alert";
 
 ion-alert.dayPrompt {
   button.alert-button:last-child {
