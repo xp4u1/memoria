@@ -1,0 +1,152 @@
+name: Build Mobile Apps
+
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  build-android:
+    name: Build Android
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: latest
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build Ionic app
+        run: pnpm run build
+
+      - name: Sync Capacitor
+        run: pnpm exec cap sync android
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: "temurin"
+          java-version: "21"
+
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Build Android APK
+        working-directory: android
+        run: ./gradlew assemble
+
+      # - name: Build Android AAB (Release)
+      #   working-directory: android
+      #   run: ./gradlew bundleRelease
+      #   env:
+      #     KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+      #     KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+      #     KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+
+      - name: Upload APK artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: android-apk
+          path: android/app/build/outputs/apk/debug/*.apk
+
+      # - name: Upload AAB artifact
+      #   uses: actions/upload-artifact@v4
+      #   with:
+      #     name: android-aab
+      #     path: android/app/build/outputs/bundle/release/*.aab
+
+  build-ios:
+    name: Build iOS
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: latest
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build Ionic app
+        run: pnpm run build
+
+      - name: Sync Capacitor
+        run: pnpm exec cap sync ios
+
+      - name: Setup Xcode
+        uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: latest-stable
+
+      - name: Install CocoaPods dependencies
+        working-directory: ios/App
+        run: pod install
+
+      - name: Build iOS (Debug)
+        working-directory: ios/App
+        run: |
+          xcodebuild \
+            -workspace App.xcworkspace \
+            -scheme App \
+            -configuration Debug \
+            -sdk iphonesimulator \
+            -destination 'platform=iOS Simulator,name=iPhone 17,OS=latest' \
+            -derivedDataPath build \
+            build
+
+      # - name: Import Code Signing Certificates
+      #   uses: apple-actions/import-codesign-certs@v2
+      #   with:
+      #     p12-file-base64: ${{ secrets.IOS_CERTIFICATE_P12 }}
+      #     p12-password: ${{ secrets.IOS_CERTIFICATE_PASSWORD }}
+
+      # - name: Download Provisioning Profile
+      #   uses: apple-actions/download-provisioning-profiles@v2
+      #   with:
+      #     bundle-id: 'com.yourcompany.yourapp'
+      #     issuer-id: ${{ secrets.APPSTORE_ISSUER_ID }}
+      #     api-key-id: ${{ secrets.APPSTORE_API_KEY_ID }}
+      #     api-private-key: ${{ secrets.APPSTORE_API_PRIVATE_KEY }}
+
+      # - name: Build iOS IPA (Release)
+      #   working-directory: ios/App
+      #   run: |
+      #     xcodebuild \
+      #       -workspace App.xcworkspace \
+      #       -scheme App \
+      #       -configuration Release \
+      #       -archivePath build/App.xcarchive \
+      #       archive
+      #     xcodebuild \
+      #       -exportArchive \
+      #       -archivePath build/App.xcarchive \
+      #       -exportPath build/output \
+      #       -exportOptionsPlist ExportOptions.plist
+
+      - name: Upload iOS build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ios-build
+          path: ios/App/build/Build/Products/Debug-iphonesimulator/*.app
