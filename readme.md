@@ -27,9 +27,6 @@ Frustrated with endless subscriptions and the unpredictability of closed-source 
 With the following steps, you can start **memoria** locally on your own computer:
 
 ```
-# Clone repository
-$ git clone git@github.com:xp4u1/memoria
-
 # Install dependencies
 $ pnpm install
 
@@ -37,7 +34,7 @@ $ pnpm install
 $ pnpm dev
 ```
 
-You can now access **memoria** in your browser at `http://localhost:5173`.
+You can now access **memoria** in your browser at `http://localhost:5173`. For more information, see the [contributing guidelines](./contributing.md).
 
 ## Is it free?
 
