@@ -7,27 +7,18 @@ export let activeLiveSync = false;
  * Syncs with remote database and updates the last sync timestamp on success.
  * Does nothing if there are no credentials saved.
  */
-export const syncWithRemote = (
-  database: any,
+export const syncWithRemote = async (
+  database: PouchDB.Database,
   options: PouchDB.Replication.SyncOptions,
 ): Promise<void> => {
-  return new Promise(async (resolve, reject) => {
-    const credentials = await getCredentials();
+  const credentials = await getCredentials();
 
-    // Make sure, the credentials are not null.
-    if (
-      !(credentials.address || credentials.username || credentials.password)
-    ) {
-      return;
-    }
+  if (!(credentials.address || credentials.username || credentials.password)) {
+    return;
+  }
 
-    syncDatabase(database, credentials, options)
-      .then(() => {
-        setLastSync(new Date());
-        resolve();
-      })
-      .catch((error) => reject(error));
-  });
+  await syncDatabase(database, credentials, options);
+  await setLastSync(new Date());
 };
 
 /**
@@ -47,7 +38,7 @@ export const startLiveSync = (database: PouchDB.Database): Promise<void> => {
 };
 
 export const setLastSync = async (date: Date) => {
-  setPreference("last_sync", date.toISOString());
+  await setPreference("last_sync", date.toISOString());
 };
 
 /**

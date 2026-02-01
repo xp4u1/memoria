@@ -67,7 +67,9 @@ const Settings: React.FC = () => {
   useEffect(() => {
     if (!credentialsLoaded) return;
 
-    setCredentials(credentials());
+    (async () => {
+      await setCredentials(credentials());
+    })();
   }, [address, username, password]);
 
   const closeToastTimeout = () => {
