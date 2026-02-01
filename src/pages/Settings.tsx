@@ -43,7 +43,7 @@ const Settings: React.FC = () => {
   });
 
   // Saves the id of the last timeout to cancel it if needed.
-  const [toastTimeout, setToastTimeout] = useState<any>();
+  const [toastTimeout, setToastTimeout] = useState<number>();
 
   const credentials = (): Credentials => ({
     address: address,

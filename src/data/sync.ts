@@ -36,7 +36,7 @@ export const syncWithRemote = (
  * After setting `activeLiveSync`, this is equivalent to running
  * `syncWithRemote` using live sync parameters.
  */
-export const startLiveSync = (database: any): Promise<void> => {
+export const startLiveSync = (database: PouchDB.Database): Promise<void> => {
   if (activeLiveSync) return Promise.resolve();
 
   activeLiveSync = true;

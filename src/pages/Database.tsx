@@ -38,7 +38,9 @@ const Database: React.FC = () => {
     const user_query = query.trim().toLowerCase();
     if (!user_query) return rows;
     return rows.filter((row) =>
-      (row.doc as unknown as Entry).title.toLowerCase().includes(user_query),
+      (row.doc as PouchDB.Core.ExistingDocument<Entry>).title
+        .toLowerCase()
+        .includes(user_query),
     );
   }, [rows, query]);
 
@@ -76,7 +78,10 @@ const Database: React.FC = () => {
 
           <section className="cards" data-cy="databaseEntries">
             {visibleRows.map((row) => (
-              <DatabaseEntryCard key={row.id} document={row.doc} />
+              <DatabaseEntryCard
+                key={row.id}
+                document={row.doc as PouchDB.Core.ExistingDocument<Entry>}
+              />
             ))}
           </section>
 
