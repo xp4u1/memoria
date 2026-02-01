@@ -16,29 +16,24 @@ export const getCredentials = async (): Promise<Credentials> => {
   };
 };
 
-export const setCredentials = (credentials: Credentials) => {
-  setPreference("remote_address", credentials.address);
-  setPreference("remote_username", credentials.username);
-  setPreference("remote_password", credentials.password);
+export const setCredentials = async (credentials: Credentials) => {
+  await setPreference("remote_address", credentials.address);
+  await setPreference("remote_username", credentials.username);
+  await setPreference("remote_password", credentials.password);
 };
 
 export const syncDatabase = async (
-  database: any,
+  database: PouchDB.Database,
   credentials: Credentials,
   options: PouchDB.Replication.SyncOptions,
-): Promise<void> => {
-  return new Promise((resolve: Function, reject: Function) => {
-    const remote = new PouchDB(credentials.address, {
-      skip_setup: true,
-      auth: {
-        username: credentials.username,
-        password: credentials.password,
-      },
-    });
-
-    database
-      .sync(remote, options)
-      .then(resolve)
-      .catch((error: any) => reject(error));
+) => {
+  const remote = new PouchDB(credentials.address, {
+    skip_setup: true,
+    auth: {
+      username: credentials.username,
+      password: credentials.password,
+    },
   });
+
+  await database.sync(remote, options);
 };

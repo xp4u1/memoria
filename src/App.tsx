@@ -1,4 +1,4 @@
-import { Redirect, Route } from "react-router-dom";
+import { Route } from "react-router-dom";
 import { IonApp, IonRouterOutlet, setupIonicReact } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
 import { StatusBar, Style } from "@capacitor/status-bar";
@@ -52,14 +52,14 @@ import "./i18n";
 
 setupIonicReact({ mode: "ios" });
 
-new Promise(async () => {
+(async () => {
   try {
     await StatusBar.setStyle({ style: Style.Light });
     await StatusBar.setBackgroundColor({ color: "#f1f3f4" });
   } catch {
-    // Ignore to supress errors while running the app in a browser.
+    // Ignore to suppress errors while running the app in a browser.
   }
-});
+})();
 
 const database = new PouchDB("memoria");
 
@@ -81,7 +81,6 @@ const App: React.FC = () => (
             <Settings />
           </Route>
           <Route exact path="/">
-            {/* <Redirect to="/home" /> */}
             <Auth />
           </Route>
         </IonRouterOutlet>

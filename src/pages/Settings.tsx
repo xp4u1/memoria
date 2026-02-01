@@ -43,7 +43,7 @@ const Settings: React.FC = () => {
   });
 
   // Saves the id of the last timeout to cancel it if needed.
-  const [toastTimeout, setToastTimeout] = useState<any>();
+  const [toastTimeout, setToastTimeout] = useState<number>();
 
   const credentials = (): Credentials => ({
     address: address,
@@ -67,7 +67,9 @@ const Settings: React.FC = () => {
   useEffect(() => {
     if (!credentialsLoaded) return;
 
-    setCredentials(credentials());
+    (async () => {
+      await setCredentials(credentials());
+    })();
   }, [address, username, password]);
 
   const closeToastTimeout = () => {

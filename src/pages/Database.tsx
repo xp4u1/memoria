@@ -11,7 +11,7 @@ import {
   IonToolbar,
 } from "@ionic/react";
 import { useAllDocs } from "use-pouchdb";
-import { useEffect, useState } from "react";
+import { useState, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 
 import "./Database.scss";
@@ -27,37 +27,30 @@ const Database: React.FC = () => {
   });
 
   const [query, setQuery] = useState("");
-  const [rows, setRows] = useState<any[]>([]);
-  const [visibleRows, setVisibleRows] = useState<any[]>([]);
+  const [visibleCount, setVisibleCount] = useState(20);
 
-  useEffect(() => {
-    if (allDocsResult.state !== "done") return;
-    setRows(allDocsResult.rows);
-  }, [allDocsResult]);
+  const rows = useMemo(
+    () => (allDocsResult.state === "done" ? allDocsResult.rows : []),
+    [allDocsResult.state, allDocsResult.rows],
+  );
 
-  useEffect(() => {
-    setVisibleRows(rows.slice(0, 20));
-  }, [rows]);
+  const filteredRows = useMemo(() => {
+    const user_query = query.trim().toLowerCase();
+    if (!user_query) return rows;
+    return rows.filter((row) =>
+      (row.doc as PouchDB.Core.ExistingDocument<Entry>).title
+        .toLowerCase()
+        .includes(user_query),
+    );
+  }, [rows, query]);
 
-  useEffect(() => filterRows(), [query]);
+  const visibleRows = useMemo(
+    () => filteredRows.slice(0, visibleCount),
+    [filteredRows, visibleCount],
+  );
 
   const addRows = () => {
-    const count = visibleRows.length;
-    setVisibleRows([...visibleRows, ...rows.slice(count, count + 10)]);
-  };
-
-  const filterRows = () => {
-    if (query === "") setRows(allDocsResult.rows);
-    else
-      setRows(
-        allDocsResult.rows.filter((row) =>
-          (row.doc as unknown as Entry).title
-            .toLowerCase()
-            .includes(query.toLowerCase()),
-        ),
-      );
-
-    setVisibleRows(rows.slice(0, 20));
+    setVisibleCount(visibleCount + 10);
   };
 
   return (
@@ -85,7 +78,10 @@ const Database: React.FC = () => {
 
           <section className="cards" data-cy="databaseEntries">
             {visibleRows.map((row) => (
-              <DatabaseEntryCard key={row.id} document={row.doc} />
+              <DatabaseEntryCard
+                key={row.id}
+                document={row.doc as PouchDB.Core.ExistingDocument<Entry>}
+              />
             ))}
           </section>
 

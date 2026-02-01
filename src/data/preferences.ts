@@ -1,6 +1,6 @@
 import { Preferences } from "@capacitor/preferences";
 
-export const setPreference = async (key: string, value: any) => {
+export const setPreference = async (key: string, value: unknown) => {
   await Preferences.set({
     key: key,
     value: JSON.stringify(value),

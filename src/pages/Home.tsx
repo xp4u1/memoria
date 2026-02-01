@@ -79,7 +79,7 @@ const Home: React.FC = () => {
 
   useIonViewWillEnter(() => {
     // todo: notify the user when something goes wrong.
-    startLiveSync(pouch).catch((_error) => {});
+    startLiveSync(pouch).catch(() => {});
   });
 
   const createAndNavigate = (id: string, title: string) => {

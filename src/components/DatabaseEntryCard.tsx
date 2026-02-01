@@ -17,8 +17,11 @@ import { usePouch } from "use-pouchdb";
 import { useTranslation } from "react-i18next";
 
 import "./DatabaseEntryCard.scss";
+import { Entry } from "../data/entry";
 
-const DatabaseEntryCard: React.FC<{ document: any }> = ({ document }) => {
+const DatabaseEntryCard: React.FC<{
+  document: PouchDB.Core.ExistingDocument<Entry>;
+}> = ({ document }) => {
   const { t } = useTranslation();
 
   const router = useIonRouter();
