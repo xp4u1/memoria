@@ -8,6 +8,10 @@ export interface Entry {
   updatedAt: string;
 }
 
+/**
+ * Format a Date as a local ISO-like date string (YYYY-MM-DD)
+ * in the runtime's local timezone
+ */
 const localISODate = (date: Date) => {
   const pad = (number: number) => String(number).padStart(2, "0");
 
@@ -18,12 +22,18 @@ const localISODate = (date: Date) => {
   return `${year}-${month}-${day}`;
 };
 
-// YYYY-MM-DD-reflection
+/**
+ * Generate the fixed reflection id (YYYY-MM-DD-reflection)
+ * for a given date.
+ */
 export const generateReflectionID = (date: Date) => {
   return localISODate(date) + "-reflection";
 };
 
-// YYYY-MM-DD-memory-UUID
+/**
+ * Generate the new memory id (YYYY-MM-DD-memory-UUID)
+ * for a given date.
+ */
 export const generateMemoryID = (date: Date) => {
   return `${localISODate(date)}-memory-${uuidv4()}`;
 };
