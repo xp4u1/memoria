@@ -9,7 +9,7 @@ import {
   useIonViewWillEnter,
 } from "@ionic/react";
 import { checkmark } from "ionicons/icons";
-import { useParams } from "react-router";
+import { useParams } from "react-router-dom";
 import { usePouch } from "use-pouchdb";
 import { useTranslation } from "react-i18next";
 
@@ -30,6 +30,12 @@ const Writer: React.FC = () => {
   const [body, setBody] = useState("");
 
   useIonViewWillEnter(() => {
+    if (id === undefined) {
+      console.error("document id in url is missing");
+      router.goBack();
+      return;
+    }
+
     pouch
       .get(id)
       .then((document) => {
