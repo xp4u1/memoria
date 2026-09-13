@@ -19,14 +19,13 @@ jobs:
         with:
           version: latest
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - name: Setup Node.js project
+        uses: pnpm/setup@v2
         with:
-          node-version: "22"
-          cache: "pnpm"
-
-      - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+          version: 11
+          runtime: node@24
+          cache: true
+          require-lockfile: true
 
       - name: Build Ionic app
         run: pnpm run build
@@ -100,15 +99,11 @@ jobs:
         with:
           xcode-version: latest-stable
 
-      - name: Install CocoaPods dependencies
-        working-directory: ios/App
-        run: pod install
-
       - name: Build iOS (Debug)
         working-directory: ios/App
         run: |
           xcodebuild \
-            -workspace App.xcworkspace \
+            -project App.xcodeproj \
             -scheme App \
             -configuration Debug \
             -sdk iphonesimulator \
