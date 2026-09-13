@@ -68,21 +68,11 @@ const App: React.FC = () => (
     <IonApp>
       <IonReactRouter>
         <IonRouterOutlet>
-          <Route exact path="/home">
-            <Home />
-          </Route>
-          <Route exact path="/writer/:id">
-            <Writer />
-          </Route>
-          <Route exact path="/database">
-            <Database />
-          </Route>
-          <Route exact path="/settings">
-            <Settings />
-          </Route>
-          <Route exact path="/">
-            <Auth />
-          </Route>
+          <Route path="/home" element={<Home />} />
+          <Route path="/writer/:id" element={<Writer />} />
+          <Route path="/database" element={<Database />} />
+          <Route path="/settings" element={<Settings />} />
+          <Route path="/" element={<Auth />} />
         </IonRouterOutlet>
       </IonReactRouter>
     </IonApp>
