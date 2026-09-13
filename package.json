@@ -10,7 +10,7 @@
     "test.e2e": "cypress run",
     "test": "vitest",
     "lint": "eslint",
-    "localize": "i18next",
+    "localize": "i18next-cli extract",
     "format": "prettier . --write"
   },
   "dependencies": {
@@ -58,7 +58,7 @@
     "cypress": "16.0.0",
     "eslint": "10.10.0",
     "eslint-plugin-react": "7.37.5",
-    "i18next-parser": "9.4.0",
+    "i18next-cli": "1.73.2",
     "jsdom": "30.0.1",
     "prettier": "3.9.6",
     "sass": "1.104.1",
